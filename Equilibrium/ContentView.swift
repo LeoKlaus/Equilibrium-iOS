@@ -8,14 +8,37 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @AppStorage("connectedHubs", store: UserDefaults(suiteName: "group.me.wehrfritz.Equilibrium")) var connectedHubs: [DiscoveredService] = []
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        if connectedHubs.isEmpty {
+            DiscoverHubsView()
+        } else {
+            if #available(iOS 26.0, macOS 26.0, *) {
+                TabView {
+                    Tab("Scenes", systemImage: "tv") {
+                        
+                    }
+                    Tab("Devices", systemImage: "cpu") {
+                        Text(verbatim: "devices")
+                    }
+                    Tab("Settings", systemImage: "gear") {
+                        Text(verbatim: "settings")
+                    }
+                }
+                .tabViewBottomAccessory {
+                    if false {
+                        Text("Hello")
+                    }
+                }
+                .tabBarMinimizeBehavior(.onScrollDown)
+            } else {
+                TabView {
+                    
+                }
+            }
         }
-        .padding()
     }
 }
 

@@ -6,13 +6,31 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		4AB4321C2E0441190081E4B0 /* EasyErrorHandling in Frameworks */ = {isa = PBXBuildFile; productRef = 4AB4321B2E0441190081E4B0 /* EasyErrorHandling */; };
+		4ABCD81C2E09B95100B936F1 /* EquilibriumAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 4ABCD81B2E09B95100B936F1 /* EquilibriumAPI */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		4AB4320C2E043DFB0081E4B0 /* Equilibrium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Equilibrium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		4AB435B32E097C0D0081E4B0 /* Exceptions for "Equilibrium" folder in "Equilibrium" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 4AB4320B2E043DFB0081E4B0 /* Equilibrium */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		4AB4320E2E043DFB0081E4B0 /* Equilibrium */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				4AB435B32E097C0D0081E4B0 /* Exceptions for "Equilibrium" folder in "Equilibrium" target */,
+			);
 			path = Equilibrium;
 			sourceTree = "<group>";
 		};
@@ -23,6 +41,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AB4321C2E0441190081E4B0 /* EasyErrorHandling in Frameworks */,
+				4ABCD81C2E09B95100B936F1 /* EquilibriumAPI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +85,8 @@
 			);
 			name = Equilibrium;
 			packageProductDependencies = (
+				4AB4321B2E0441190081E4B0 /* EasyErrorHandling */,
+				4ABCD81B2E09B95100B936F1 /* EquilibriumAPI */,
 			);
 			productName = Equilibrium;
 			productReference = 4AB4320C2E043DFB0081E4B0 /* Equilibrium.app */;
@@ -94,6 +116,10 @@
 			);
 			mainGroup = 4AB432032E043DFA0081E4B0;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				4AB4321A2E0441190081E4B0 /* XCLocalSwiftPackageReference "../../EasyErrorHandling" */,
+				4ABCD81A2E09B95100B936F1 /* XCLocalSwiftPackageReference "../EquilibriumAPI" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4AB4320D2E043DFB0081E4B0 /* Products */;
 			projectDirPath = "";
@@ -254,6 +280,9 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Equilibrium/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Equilibrium;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -264,22 +293,23 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 15.6;
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.wehrfritz.Equilibrium;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				XROS_DEPLOYMENT_TARGET = 26.0;
 			};
 			name = Debug;
@@ -297,6 +327,9 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Equilibrium/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Equilibrium;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -307,22 +340,23 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 15.6;
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.wehrfritz.Equilibrium;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				XROS_DEPLOYMENT_TARGET = 26.0;
 			};
 			name = Release;
@@ -349,6 +383,28 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		4AB4321A2E0441190081E4B0 /* XCLocalSwiftPackageReference "../../EasyErrorHandling" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../EasyErrorHandling;
+		};
+		4ABCD81A2E09B95100B936F1 /* XCLocalSwiftPackageReference "../EquilibriumAPI" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../EquilibriumAPI;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4AB4321B2E0441190081E4B0 /* EasyErrorHandling */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = EasyErrorHandling;
+		};
+		4ABCD81B2E09B95100B936F1 /* EquilibriumAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = EquilibriumAPI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4AB432042E043DFA0081E4B0 /* Project object */;
 }
