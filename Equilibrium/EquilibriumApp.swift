@@ -7,13 +7,26 @@
 
 import SwiftUI
 import EasyErrorHandling
+import EquilibriumAPI
 
 @main
 struct EquilibriumApp: App {
-    var body: some Scene {
+    
+    @AppStorage("connectedHubs", store: UserDefaults(suiteName: "group.me.wehrfritz.Equilibrium")) var connectedHubs: [DiscoveredService] = []
+    
+    let connectionHandler = HubConnectionHandler()
+    
+    var body: some SwiftUI.Scene {
         WindowGroup {
-            ContentView()
-                .withErrorHandling()
+            VStack {
+                if connectedHubs.isEmpty {
+                    DiscoverHubsView()
+                } else {
+                    ContentView()
+                }
+            }
+            .withErrorHandling()
+            .environment(self.connectionHandler)
         }
     }
 }

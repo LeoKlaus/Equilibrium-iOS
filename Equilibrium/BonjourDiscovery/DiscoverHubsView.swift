@@ -12,8 +12,10 @@ import EquilibriumAPI
 struct DiscoverHubsView: View {
     
     @EnvironmentObject var errorHandler: ErrorHandler
+    @Environment(HubConnectionHandler.self) var connectionHandler
     
     @AppStorage("connectedHubs", store: UserDefaults(suiteName: "group.me.wehrfritz.Equilibrium")) var connectedHubs: [DiscoveredService] = []
+    
     
     let browser = ZeroconfBrowser()
     
@@ -30,10 +32,12 @@ struct DiscoverHubsView: View {
         Task {
             do {
                 _ = try await EquilibriumAPIHandler.testConnection(host: host, port: port)
+                let newHub = DiscoveredService(name: name, host: host, port: port)
                 DispatchQueue.main.async {
                     self.isTestingConnection = false
-                    self.connectedHubs.append(DiscoveredService(name: name, host: host, port: port))
+                    self.connectedHubs.append(newHub)
                 }
+                try connectionHandler.switchToHub(newHub)
             } catch {
                 DispatchQueue.main.async {
                     self.isTestingConnection = false

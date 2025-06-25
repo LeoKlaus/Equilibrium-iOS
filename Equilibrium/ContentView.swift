@@ -9,34 +9,37 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @AppStorage("connectedHubs", store: UserDefaults(suiteName: "group.me.wehrfritz.Equilibrium")) var connectedHubs: [DiscoveredService] = []
-    
     var body: some View {
-        if connectedHubs.isEmpty {
-            DiscoverHubsView()
+        if #available(iOS 26.0, macOS 26.0, *) {
+            TabView {
+                Tab("Scenes", systemImage: "tv") {
+                    ScenesView()
+                }
+                Tab("Devices", systemImage: "cpu") {
+                    DeviceCreationView()
+                }
+                Tab("Settings", systemImage: "gear") {
+                    SettingsView()
+                }
+            }
+            .tabViewBottomAccessory {
+                if false {
+                    Text("Hello")
+                }
+            }
+            .tabBarMinimizeBehavior(.onScrollDown)
         } else {
-            if #available(iOS 26.0, macOS 26.0, *) {
-                TabView {
-                    Tab("Scenes", systemImage: "tv") {
-                        
+            TabView {
+                
+                ScenesView()
+                    .tabItem {
+                        Label("Scenes", systemImage: "tv")
                     }
-                    Tab("Devices", systemImage: "cpu") {
-                        Text(verbatim: "devices")
+                
+                SettingsView()
+                    .tabItem {
+                        Label("Settings", systemImage: "gear")
                     }
-                    Tab("Settings", systemImage: "gear") {
-                        Text(verbatim: "settings")
-                    }
-                }
-                .tabViewBottomAccessory {
-                    if false {
-                        Text("Hello")
-                    }
-                }
-                .tabBarMinimizeBehavior(.onScrollDown)
-            } else {
-                TabView {
-                    
-                }
             }
         }
     }

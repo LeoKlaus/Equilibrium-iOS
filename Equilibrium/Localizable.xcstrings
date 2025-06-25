@@ -1,0 +1,452 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    "%@:%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@:%2$@"
+          }
+        }
+      }
+    },
+    "0" : {
+
+    },
+    "1" : {
+
+    },
+    "2" : {
+
+    },
+    "3" : {
+
+    },
+    "4" : {
+
+    },
+    "5" : {
+
+    },
+    "6" : {
+
+    },
+    "7" : {
+
+    },
+    "8" : {
+
+    },
+    "9" : {
+
+    },
+    "192.168.0.123" : {
+
+    },
+    "Add Command" : {
+
+    },
+    "Add Image" : {
+
+    },
+    "Back" : {
+
+    },
+    "Blue" : {
+
+    },
+    "Bluetooth" : {
+
+    },
+    "Bluetooth Command" : {
+
+    },
+    "Bluetooth Devices" : {
+
+    },
+    "Body" : {
+
+    },
+    "Brightness Down" : {
+
+    },
+    "Brightness Up" : {
+
+    },
+    "Button" : {
+
+    },
+    "Cancel" : {
+
+    },
+    "Channel" : {
+
+    },
+    "Channel Down" : {
+
+    },
+    "Channel Up" : {
+
+    },
+    "Colored buttons" : {
+
+    },
+    "Command group" : {
+
+    },
+    "Commands" : {
+
+    },
+    "Connect" : {
+
+    },
+    "Connect to %@" : {
+
+    },
+    "Connected" : {
+
+    },
+    "Create Command" : {
+
+    },
+    "Creating script commands is currently not supported" : {
+
+    },
+    "Delete" : {
+
+    },
+    "DELETE" : {
+
+    },
+    "Delete %lld commands?" : {
+
+    },
+    "Delete %lld images?" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Delete %lld image?"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "new",
+                  "value" : "Delete %lld images?"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Device" : {
+
+    },
+    "Devices" : {
+
+    },
+    "Disconnect from %@" : {
+
+    },
+    "Discovered Hubs:" : {
+
+    },
+    "Done, command %@ created!" : {
+
+    },
+    "Down" : {
+
+    },
+    "Enable discovery" : {
+
+    },
+    "Enter" : {
+
+    },
+    "Escape" : {
+
+    },
+    "Exit" : {
+
+    },
+    "Fast Forward" : {
+
+    },
+    "GET" : {
+
+    },
+    "Green" : {
+
+    },
+    "Guide" : {
+
+    },
+    "HEAD" : {
+
+    },
+    "Home" : {
+
+    },
+    "Host" : {
+
+    },
+    "Host:" : {
+
+    },
+    "Icons" : {
+
+    },
+    "Infrared" : {
+
+    },
+    "Infrared Command" : {
+
+    },
+    "Key" : {
+
+    },
+    "KEY_CODE" : {
+
+    },
+    "Left" : {
+
+    },
+    "Loading commands from hub..." : {
+
+    },
+    "Loading devices from hub..." : {
+
+    },
+    "Loading images from hub..." : {
+
+    },
+    "Looking for Equilibrium instances in your network..." : {
+
+    },
+    "Manual configuration" : {
+
+    },
+    "Media Key" : {
+
+    },
+    "Menu" : {
+
+    },
+    "Mute" : {
+
+    },
+    "Name" : {
+
+    },
+    "Name:" : {
+
+    },
+    "Navigation" : {
+
+    },
+    "Network Command" : {
+
+    },
+    "Network request" : {
+
+    },
+    "Next Track" : {
+
+    },
+    "No bluetooth devices connected" : {
+
+    },
+    "No commands found" : {
+
+    },
+    "No images found" : {
+
+    },
+    "None" : {
+
+    },
+    "Not connected" : {
+
+    },
+    "Not paired" : {
+
+    },
+    "Numbers" : {
+
+    },
+    "Other" : {
+
+    },
+    "Paired" : {
+
+    },
+    "PATCH" : {
+
+    },
+    "Pause" : {
+
+    },
+    "Play" : {
+
+    },
+    "Play/Pause" : {
+
+    },
+    "Port" : {
+
+    },
+    "Port:" : {
+
+    },
+    "POST" : {
+
+    },
+    "Power" : {
+
+    },
+    "Power off" : {
+
+    },
+    "Power on" : {
+
+    },
+    "Power toggle" : {
+
+    },
+    "Press key for %@" : {
+
+    },
+    "Press key for %@ again" : {
+
+    },
+    "Previous Track" : {
+
+    },
+    "PUT" : {
+
+    },
+    "Received code was too short, press the key again..." : {
+
+    },
+    "Record" : {
+
+    },
+    "Recording was cancelled by the hub. Please try again." : {
+
+    },
+    "Red" : {
+
+    },
+    "Regular Key" : {
+
+    },
+    "Retried to many times, cancelling..." : {
+
+    },
+    "Rewind" : {
+
+    },
+    "Right" : {
+
+    },
+    "Save" : {
+
+    },
+    "Scenes" : {
+
+    },
+    "Script" : {
+
+    },
+    "Script Command" : {
+
+    },
+    "Search" : {
+
+    },
+    "Select" : {
+
+    },
+    "Select image to upload" : {
+
+    },
+    "Send command" : {
+
+    },
+    "Setting the correct button allows Equilibrium to automatically suggest key maps for scenes." : {
+
+    },
+    "Settings" : {
+
+    },
+    "Sleep" : {
+
+    },
+    "Start Recording %@" : {
+
+    },
+    "Stop" : {
+
+    },
+    "This is taking longer than expected. If you know your instance IP and port, use the manual configuration option below." : {
+
+    },
+    "Transport" : {
+
+    },
+    "Turn Off" : {
+
+    },
+    "Turn On" : {
+
+    },
+    "Type" : {
+
+    },
+    "Up" : {
+
+    },
+    "Upload" : {
+
+    },
+    "Upload from files" : {
+
+    },
+    "Upload from photos" : {
+
+    },
+    "Volume" : {
+
+    },
+    "Volume down" : {
+
+    },
+    "Volume Down" : {
+
+    },
+    "Volume up" : {
+
+    },
+    "Volume Up" : {
+
+    },
+    "Yellow" : {
+
+    },
+    "Yes" : {
+
+    },
+    "You don't have any scenes yet, do you want to create one?" : {
+
+    }
+  },
+  "version" : "1.1"
+}
