@@ -11,6 +11,8 @@ import EasyErrorHandling
 
 struct ImageListView: View {
     
+    @Environment(\.dismiss) var dismiss
+    
     @EnvironmentObject var errorHandler: ErrorHandler
     @Environment(HubConnectionHandler.self) var connectionHandler
     
@@ -21,6 +23,19 @@ struct ImageListView: View {
     
     @State private var showDeleteConfirmation: Bool = false
     @State private var imagesToDelete: IndexSet? = nil
+    
+    let isPicker: Bool
+    @Binding var selectedImage: UserImage?
+    
+    init() {
+        self._selectedImage = .constant(nil)
+        self.isPicker = false
+    }
+    
+    init(selectedImage: Binding<UserImage?>) {
+        self._selectedImage = selectedImage
+        self.isPicker = true
+    }
     
     @Sendable func getImages() async {
         do {
@@ -71,27 +86,64 @@ struct ImageListView: View {
                     Text("No images found")
                 }
                 ForEach(self.images) { image in
-                    Menu {
-                        Button(role: .destructive) {
-                            deleteImage(image)
+                    if isPicker {
+                        Button {
+                            self.selectedImage = image
+                            self.dismiss()
                         } label: {
-                            Label("Delete", systemImage: "trash")
+                            HStack {
+                                ImageView(image: image)
+                                    .frame(width: 60, height: 60)
+                                Text(image.filename)
+                                Spacer()
+                                if selectedImage?.id == image.id {
+                                    Image(systemName: "checkmark")
+                                        .foregroundStyle(.accent)
+                                }
+                            }
+                            .contentShape(.rect)
                         }
-                    } label: {
-                        HStack {
-                            ImageView(image: image)
-                                .frame(width: 60, height: 60)
-                            Text(image.filename)
-                            Spacer()
+                        .foregroundStyle(.primary)
+                    } else {
+                        Menu {
+                            Button(role: .destructive) {
+                                deleteImage(image)
+                            } label: {
+                                Label("Delete", systemImage: "trash")
+                            }
+                        } label: {
+                            HStack {
+                                ImageView(image: image)
+                                    .frame(width: 60, height: 60)
+                                Text(image.filename)
+                                Spacer()
+                            }
+                            .contentShape(.rect)
                         }
-                        .contentShape(.rect)
+                        .foregroundStyle(.primary)
                     }
-                    .foregroundStyle(.primary)
                 }
                 .onDelete(perform: { index in
                     self.imagesToDelete = index
                     self.showDeleteConfirmation = true
                 })
+                
+                if isPicker {
+                    Button {
+                        self.selectedImage = nil
+                        self.dismiss()
+                    } label: {
+                        HStack {
+                            Text("None")
+                            Spacer()
+                            if selectedImage == nil {
+                                Image(systemName: "checkmark")
+                                    .foregroundStyle(.accent)
+                            }
+                        }
+                    }
+                    .foregroundStyle(.primary)
+                }
             }
         }
         .refreshable(action: self.getImages)
@@ -124,4 +176,6 @@ struct ImageListView: View {
 
 #Preview {
     ImageListView()
+        .withErrorHandling()
+        .environment(MockHubConnectionHandler() as HubConnectionHandler)
 }

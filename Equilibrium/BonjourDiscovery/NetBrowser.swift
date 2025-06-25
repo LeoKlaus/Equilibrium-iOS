@@ -54,7 +54,6 @@ class ZeroconfBrowser {
         browser?.browseResultsChangedHandler = { ( results, changes ) in
             
             for change in changes {
-                //        print(change.hashValue)
                 if case .added(let added) = change {
                     if case .service(let name,_,_,_) = added.endpoint {
                         
@@ -106,6 +105,6 @@ class ZeroconfBrowser {
     func stopBrowsing() {
         self.browser?.cancel()
         self.browser = nil
-        print("Stopped browser!")
+        Self.logger.debug("Stopped browser!")
     }
 }

@@ -28,7 +28,7 @@ struct IrCommandCreationView: View {
             self.currentState = response
         }
         if response == .done {
-            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now()+1) {
                 self.dismiss()
             }
         }

@@ -10,13 +10,19 @@ import EquilibriumAPI
 
 @Observable
 class MockHubConnectionHandler: HubConnectionHandler {
+    
+    override init() {
+        super.init()
+        self.apiHandler = MockApiHandler()
+    }
+    
     //override var scenes: [Scene] = []
     
     //override var devices: [Device] = []
-    override func getDevices() async throws -> [Device] {
+    /*override func getDevices() async throws -> [Device] {
         self.devices = [
             .mockTV
         ]
         return devices
-    }
+    }*/
 }

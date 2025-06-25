@@ -45,5 +45,8 @@ struct ImageView: View {
 }
 
 #Preview {
-    ImageView(image: UserImage(id: 1, filename: "Test.png", path: "/config/images/test.png"))
+    ImageView(image: .mock)
+        .frame(width: 60, height: 60)
+        .withErrorHandling()
+        .environment(MockHubConnectionHandler() as HubConnectionHandler)
 }

@@ -50,10 +50,19 @@
     "Add Command" : {
 
     },
+    "Add Device" : {
+
+    },
     "Add Image" : {
 
     },
+    "Amplifier" : {
+
+    },
     "Back" : {
+
+    },
+    "basic" : {
 
     },
     "Blue" : {
@@ -63,6 +72,9 @@
 
     },
     "Bluetooth Command" : {
+
+    },
+    "Bluetooth Device" : {
 
     },
     "Bluetooth Devices" : {
@@ -98,6 +110,9 @@
     "Command group" : {
 
     },
+    "commands" : {
+
+    },
     "Commands" : {
 
     },
@@ -108,9 +123,6 @@
 
     },
     "Connected" : {
-
-    },
-    "Create Command" : {
 
     },
     "Creating script commands is currently not supported" : {
@@ -159,6 +171,9 @@
     "Discovered Hubs:" : {
 
     },
+    "Display" : {
+
+    },
     "Done, command %@ created!" : {
 
     },
@@ -204,10 +219,19 @@
     "Icons" : {
 
     },
+    "If this device can be controlled with a bluetooth keyboard (like an Apple TV), Equilibrium can connect to it that way." : {
+
+    },
+    "Image" : {
+
+    },
     "Infrared" : {
 
     },
     "Infrared Command" : {
+
+    },
+    "Integration" : {
 
     },
     "Key" : {
@@ -234,10 +258,16 @@
     "Manual configuration" : {
 
     },
+    "Manufacturer" : {
+
+    },
     "Media Key" : {
 
     },
     "Menu" : {
+
+    },
+    "Model" : {
 
     },
     "Mute" : {
@@ -285,6 +315,9 @@
     "Other" : {
 
     },
+    "Pair devices" : {
+
+    },
     "Paired" : {
 
     },
@@ -298,6 +331,9 @@
 
     },
     "Play/Pause" : {
+
+    },
+    "Player" : {
 
     },
     "Port" : {
@@ -357,6 +393,9 @@
     "Right" : {
 
     },
+    "save" : {
+
+    },
     "Save" : {
 
     },
@@ -378,6 +417,9 @@
     "Select image to upload" : {
 
     },
+    "Select the type that best fits your device. This information will be used to automatically suggest key maps for your remote." : {
+
+    },
     "Send command" : {
 
     },
@@ -397,6 +439,9 @@
 
     },
     "This is taking longer than expected. If you know your instance IP and port, use the manual configuration option below." : {
+
+    },
+    "To pair Equilibrium to a new bluetooth device, enable discovery here first and then connect to **Equilibrium Virtual Keyboard** from the bluetooth settings of your device. For some devices (notably Apple TVs), pairing does not start automatically after connecting.\nIn that case, use the **Pair devices** button below to manually initiate pairing." : {
 
     },
     "Transport" : {
@@ -436,6 +481,9 @@
 
     },
     "Volume Up" : {
+
+    },
+    "Warning: The Bluetooth integration in Equilibrium is in the earlier stages of development. While connecting to paired devices and controlling them (usually) works reliably, pairing can take a few attempts to work." : {
 
     },
     "Yellow" : {

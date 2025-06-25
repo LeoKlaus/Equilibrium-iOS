@@ -14,11 +14,25 @@ extension Device {
         manufacturer: "Hisense",
         model: "55U8KQ",
         type: .display,
+        image: .mock,
+        imageId: 1,
         commandGroups: [
             .mock
         ],
-        scenes: [
+        scenes: [],
+        macros: []
+    )
+    
+    static let mockAmplifier = Device(
+        id: 2,
+        name: "Denon Amplifier",
+        manufacturer: "Denon",
+        model: "AVR-X2800H",
+        type: .amplifier,
+        commandGroups: [
+            .mock
         ],
+        scenes: [],
         macros: []
     )
 }

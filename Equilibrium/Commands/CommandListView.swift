@@ -116,12 +116,11 @@ struct CommandListView: View {
             }
         }
         .sheet(isPresented: $showCreateSheet) {
+            Task {
+                await getCommands()
+            }
+        } content: {
             CreateCommandView()
-                .onDisappear {
-                    Task {
-                        await getCommands()
-                    }
-                }
         }
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
@@ -136,5 +135,9 @@ struct CommandListView: View {
 }
 
 #Preview {
-    ImageListView()
+    NavigationStack {
+        CommandListView()
+    }
+    .withErrorHandling()
+    .environment(MockHubConnectionHandler() as HubConnectionHandler)
 }

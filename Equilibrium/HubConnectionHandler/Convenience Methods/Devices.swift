@@ -10,6 +10,13 @@ import EquilibriumAPI
 
 extension HubConnectionHandler {
     
+    func getDevices() async throws {
+        guard let apiHandler else {
+            throw HubConnectionError.noApiHandler
+        }
+        
+        self.devices = try await apiHandler.get(path: "/devices/")
+    }
     
     func getDevice(_ id: Int) async throws -> Device {
         guard let apiHandler else {
@@ -77,6 +84,14 @@ extension HubConnectionHandler {
         }
         
         return try await apiHandler.post(path: "/devices/start_ble_advertisement")
+    }
+    
+    func pairBle() async throws {
+        guard let apiHandler else {
+            throw HubConnectionError.noApiHandler
+        }
+        
+        return try await apiHandler.post(path: "/devices/start_ble_pairing")
     }
     
     func connectBleDevices(_ address: String) async throws {

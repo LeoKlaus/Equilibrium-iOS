@@ -44,12 +44,4 @@ class HubConnectionHandler {
         }
         userDefaults.set(try JSONEncoder().encode(service), forKey: "currentHub")
     }
-    
-    func getDevices() async throws -> [Device] {
-        guard let apiHandler else {
-            throw HubConnectionError.noApiHandler
-        }
-        
-        return try await apiHandler.get(path: "/devices/")
-    }
 }
