@@ -69,6 +69,8 @@ class MockApiHandler: EquilibriumAPIHandler {
             throw URLError(.badURL)
         case .info:
             throw URLError(.badURL)
+        case .systemStatus:
+            throw URLError(.badURL)
         case .wsStatus:
             throw URLError(.badURL)
         case .wsCommands:

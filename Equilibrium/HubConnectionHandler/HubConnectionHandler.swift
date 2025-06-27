@@ -20,7 +20,7 @@ class HubConnectionHandler {
     
     var apiHandler: EquilibriumAPIHandler?
     
-    var currentSceneStatus: SceneStatusReport?
+    var currentSceneStatus: StatusReport?
     
     var scenes: [Scene] = []
     

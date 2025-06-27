@@ -34,7 +34,7 @@ extension HubConnectionHandler {
                 for try await message in socketStream {
                     switch message {
                     case .data(let data):
-                        self.currentSceneStatus = try JSONDecoder().decode(SceneStatusReport.self, from: data)
+                        self.currentSceneStatus = try JSONDecoder().decode(StatusReport.self, from: data)
                     case .string(let string):
                         guard let data = string.data(using: .utf8) else {
                             Self.logger.error("Received string from hub but couldn't convert to data")
@@ -43,7 +43,7 @@ extension HubConnectionHandler {
                             }
                             break
                         }
-                        self.currentSceneStatus = try JSONDecoder().decode(SceneStatusReport.self, from: data)
+                        self.currentSceneStatus = try JSONDecoder().decode(StatusReport.self, from: data)
                     @unknown default:
                         Self.logger.error("Received unknown response")
                         DispatchQueue.main.async {

@@ -14,6 +14,8 @@ struct BasicDeviceCreationView: View {
     @EnvironmentObject var errorHandler: ErrorHandler
     @Environment(HubConnectionHandler.self) var connectionHandler
     
+    let isEditView: Bool
+    
     @State private var name: String = ""
     @State private var manufacturer: String = ""
     @State private var model: String = ""
@@ -28,6 +30,14 @@ struct BasicDeviceCreationView: View {
     
     @State private var createdDevice: Device? = nil
     
+    init() {
+        self.isEditView = false
+    }
+    
+    init(device: Device) {
+        self.isEditView = true
+    }
+    
     func saveDevice() {
         self.isSaving = true
         
@@ -41,7 +51,7 @@ struct BasicDeviceCreationView: View {
             modelStr = self.model
         }
         
-        let device = Device(name: self.name, manufacturer: manufacturerStr, model: modelStr, type: self.type, imageId: self.image?.id)
+        let device = Device(name: self.name, manufacturer: manufacturerStr, model: modelStr, type: self.type, bluetoothAddress: self.bleDevice?.address, imageId: self.image?.id)
         
         Task {
             do {
@@ -119,7 +129,15 @@ struct BasicDeviceCreationView: View {
     }
 }
 
-#Preview {
+#Preview("Create") {
+    NavigationStack {
+        BasicDeviceCreationView()
+    }
+    .withErrorHandling()
+    .environment(MockHubConnectionHandler() as HubConnectionHandler)
+}
+
+#Preview("Create") {
     NavigationStack {
         BasicDeviceCreationView()
     }

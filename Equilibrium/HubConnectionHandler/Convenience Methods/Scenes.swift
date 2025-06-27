@@ -53,7 +53,7 @@ extension HubConnectionHandler {
         return try await apiHandler.delete(endpoint: .scene(id: id))
     }
     
-    func getCurrentScene() async throws -> SceneStatusReport {
+    func getCurrentScene() async throws -> StatusReport {
         guard let apiHandler else {
             throw HubConnectionError.noApiHandler
         }
