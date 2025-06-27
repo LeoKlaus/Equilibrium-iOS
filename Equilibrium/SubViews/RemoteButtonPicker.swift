@@ -35,7 +35,7 @@ struct RemoteButtonPicker: View {
         }
     }
     
-    func pickerButton(_ name: LocalizedStringKey, systemImage: String, command: RemoteButton, iconColor: Color = .accent) -> some View {
+    func pickerButton(_ name: String, systemImage: String, command: RemoteButton, iconColor: Color = .accent) -> some View {
         Button {
             self.button = command
             self.dismiss()

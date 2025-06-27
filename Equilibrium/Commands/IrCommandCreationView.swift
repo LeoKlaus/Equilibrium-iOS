@@ -21,6 +21,8 @@ struct IrCommandCreationView: View {
     
     @State private var isRecording: Bool = false
     
+    @State private var websocketTask: Task<(), Never>? = nil
+    
     var afterFinish: () -> Void = {}
     
     func callback(_ response: IrResponse) {
@@ -80,7 +82,7 @@ struct IrCommandCreationView: View {
                 }
             } else {
                 Button {
-                    Task {
+                    websocketTask = Task {
                         do {
                             try await self.connectionHandler.createIrCommand(
                                 command: command,
@@ -96,12 +98,15 @@ struct IrCommandCreationView: View {
                 .disabled(isRecording)
             }
         }
+        .onDisappear {
+            self.websocketTask?.cancel()
+        }
     }
 }
 
 #Preview("Default") {
     List {
-        IrCommandCreationView(command: Command(name: "Power Toggle", button: .powerToggle, type: .ir))
+        IrCommandCreationView(command: .mockPowerToggle)
     }
     .withErrorHandling()
     .environment(HubConnectionHandler())
@@ -109,7 +114,7 @@ struct IrCommandCreationView: View {
 
 #Preview("Ready to record") {
     List {
-        IrCommandCreationView(command: Command(name: "Power Toggle", button: .powerToggle, type: .ir), currentState: .pressKey)
+        IrCommandCreationView(command: .mockPowerToggle, currentState: .pressKey)
     }
     .withErrorHandling()
     .environment(HubConnectionHandler())
@@ -117,7 +122,7 @@ struct IrCommandCreationView: View {
 
 #Preview("Repeat Key") {
     List {
-        IrCommandCreationView(command: Command(name: "Power Toggle", button: .powerToggle, type: .ir), currentState: .repeatKey)
+        IrCommandCreationView(command: .mockPowerToggle, currentState: .repeatKey)
     }
     .withErrorHandling()
     .environment(HubConnectionHandler())
@@ -125,7 +130,7 @@ struct IrCommandCreationView: View {
 
 #Preview("Short Code") {
     List {
-        IrCommandCreationView(command: Command(name: "Power Toggle", button: .powerToggle, type: .ir), currentState: .shortCode)
+        IrCommandCreationView(command: .mockPowerToggle, currentState: .shortCode)
     }
     .withErrorHandling()
     .environment(HubConnectionHandler())
@@ -134,7 +139,7 @@ struct IrCommandCreationView: View {
 
 #Preview("Done") {
     List {
-        IrCommandCreationView(command: Command(name: "Power Toggle", button: .powerToggle, type: .ir), currentState: .done)
+        IrCommandCreationView(command: .mockPowerToggle, currentState: .done)
     }
     .withErrorHandling()
     .environment(HubConnectionHandler())
@@ -142,7 +147,7 @@ struct IrCommandCreationView: View {
 
 #Preview("Too many retries") {
     List {
-        IrCommandCreationView(command: Command(name: "Power Toggle", button: .powerToggle, type: .ir), currentState: .tooManyRetries)
+        IrCommandCreationView(command: .mockPowerToggle, currentState: .tooManyRetries)
     }
     .withErrorHandling()
     .environment(HubConnectionHandler())
@@ -150,7 +155,7 @@ struct IrCommandCreationView: View {
 
 #Preview("Cancelled") {
     List {
-        IrCommandCreationView(command: Command(name: "Power Toggle", button: .powerToggle, type: .ir), currentState: .cancelled)
+        IrCommandCreationView(command: .mockPowerToggle, currentState: .cancelled)
     }
     .withErrorHandling()
     .environment(HubConnectionHandler())

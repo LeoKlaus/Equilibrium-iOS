@@ -14,6 +14,8 @@ struct DeviceListView: View {
     @Environment(HubConnectionHandler.self) var connectionHandler
     @EnvironmentObject var errorHandler: ErrorHandler
     
+    @State private var showDeviceCreationSheet: Bool = false
+    
     @Sendable
     func getDevices() async {
         do {
@@ -25,15 +27,29 @@ struct DeviceListView: View {
     
     var body: some View {
         List {
+            if connectionHandler.devices.isEmpty {
+                Text("No devices found.")
+                Button {
+                    self.showDeviceCreationSheet = true
+                } label: {
+                    Label("Create one now?", systemImage: "plus")
+                }
+            }
+            
             ForEach(connectionHandler.devices) { device in
                 DeviceListItem(device: device)
             }
         }
         .task(getDevices)
+        .sheet(isPresented: $showDeviceCreationSheet) {
+            NavigationStack {
+                BasicDeviceCreationView()
+            }
+        }
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button {
-                    
+                    self.showDeviceCreationSheet = true
                 } label: {
                     Label("Add Device", systemImage: "plus")
                 }

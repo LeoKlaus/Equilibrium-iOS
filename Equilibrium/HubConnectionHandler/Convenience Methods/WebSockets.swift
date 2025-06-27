@@ -16,7 +16,7 @@ extension HubConnectionHandler {
             throw HubConnectionError.noApiHandler
         }
         
-        let webSocketTask = try apiHandler.openWebsocket(path: "/ws/status")
+        let webSocketTask = try apiHandler.openWebsocket(endpoint: .wsStatus)
         
         try await self.closeStatusWebsocket()
         
@@ -77,7 +77,7 @@ extension HubConnectionHandler {
             throw HubConnectionError.invalidInput
         }
         
-        let webSocketTask = try apiHandler.openWebsocket(path: "/ws/commands")
+        let webSocketTask = try apiHandler.openWebsocket(endpoint: .wsCommands)
         
         webSocketTask.resume()
         
@@ -89,29 +89,44 @@ extension HubConnectionHandler {
         
         try await webSocketTask.send(.string(commandString))
         
-        while true {
-            
-            let receivedMessage = try await webSocketTask.receive()
-            
-            let response: IrResponse
-            
-            switch receivedMessage {
-            case .data(let data):
-                response = try JSONDecoder().decode(IrResponse.self, from: data)
-            case .string(let string):
-                response = try JSONDecoder().decode(IrResponse.self, from: Data(string.utf8))
-            @unknown default:
-                webSocketTask.cancel(with: .internalServerError, reason: nil)
-                throw HubConnectionError.invalidServerResponse
+        var runLoop: Bool = true
+        
+        try await withTaskCancellationHandler {
+            while runLoop {
+                
+                let receivedMessage = try await withTaskCancellationHandler {
+                    try await webSocketTask.receive()
+                } onCancel: {
+                    webSocketTask.cancel(with: .normalClosure, reason: nil)
+                }
+                
+                let response: IrResponse
+                
+                switch receivedMessage {
+                case .data(let data):
+                    response = try JSONDecoder().decode(IrResponse.self, from: data)
+                case .string(let string):
+                    response = try JSONDecoder().decode(IrResponse.self, from: Data(string.utf8))
+                @unknown default:
+                    webSocketTask.cancel(with: .internalServerError, reason: nil)
+                    throw HubConnectionError.invalidServerResponse
+                }
+                
+                callback(response)
+                
+                if case .done = response {
+                    break
+                } else if case .cancelled = response {
+                    break
+                }
             }
-            
-            callback(response)
-            
-            if case .done = response {
-                break
-            } else if case .cancelled = response {
-                break
+        } onCancel: {
+            webSocketTask.cancel(with: .normalClosure, reason: nil)
+            DispatchQueue.main.async {
+                runLoop = false
+                Self.logger.info("Ir recording task was cancelled, closing websocket...")
             }
+            return
         }
         
         webSocketTask.cancel(with: .normalClosure, reason: nil)

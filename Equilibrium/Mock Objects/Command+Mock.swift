@@ -13,6 +13,18 @@ extension Command {
         name: "Power Toggle",
         button: .powerToggle,
         type: .ir,
-        commandGroupId: 1
+        commandGroup: .power,
+        device: Device(
+            id: 1,
+            name: "Hisense TV",
+            manufacturer: "Hisense",
+            model: "55U8KQ",
+            type: .display,
+            image: .mock,
+            imageId: 1,
+            commands: [],
+            scenes: [],
+            macros: []
+        )
     )
 }

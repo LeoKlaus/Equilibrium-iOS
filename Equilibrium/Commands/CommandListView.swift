@@ -94,11 +94,8 @@ struct CommandListView: View {
                             Label("Delete", systemImage: "trash")
                         }
                     } label: {
-                        HStack {
-                            Text(command.name)
-                            Spacer()
-                        }
-                        .contentShape(.rect)
+                        CommandListItem(command: command)
+                            .contentShape(.rect)
                     }
                     .foregroundStyle(.primary)
                 }
@@ -121,6 +118,7 @@ struct CommandListView: View {
             }
         } content: {
             CreateCommandView()
+                .withErrorHandling()
         }
         .toolbar {
             ToolbarItem(placement: .primaryAction) {

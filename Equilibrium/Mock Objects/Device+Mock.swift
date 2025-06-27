@@ -16,8 +16,8 @@ extension Device {
         type: .display,
         image: .mock,
         imageId: 1,
-        commandGroups: [
-            .mock
+        commands: [
+            .mockPowerToggle
         ],
         scenes: [],
         macros: []
@@ -29,8 +29,8 @@ extension Device {
         manufacturer: "Denon",
         model: "AVR-X2800H",
         type: .amplifier,
-        commandGroups: [
-            .mock
+        commands: [
+            .mockPowerToggle
         ],
         scenes: [],
         macros: []

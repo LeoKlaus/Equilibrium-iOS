@@ -14,7 +14,7 @@ extension HubConnectionHandler {
             throw HubConnectionError.noApiHandler
         }
         
-        return try await apiHandler.get(path: "/commands/")
+        return try await apiHandler.get(endpoint: .commands)
     }
     
     func getCommand(_ id: Int) async throws -> Command {
@@ -22,7 +22,7 @@ extension HubConnectionHandler {
             throw HubConnectionError.noApiHandler
         }
         
-        return try await apiHandler.get(path: "/commands/\(id)/")
+        return try await apiHandler.get(endpoint: .command(id: id))
     }
     
     func createCommand(_ command: Command) async throws -> Command {
@@ -30,7 +30,7 @@ extension HubConnectionHandler {
             throw HubConnectionError.noApiHandler
         }
         
-        return try await apiHandler.post(path: "/commands/", object: command)
+        return try await apiHandler.post(endpoint: .commands, object: command)
     }
     
     func deleteCommand(_ id: Int) async throws {
@@ -38,7 +38,7 @@ extension HubConnectionHandler {
             throw HubConnectionError.noApiHandler
         }
         
-        return try await apiHandler.delete(path: "/commands/\(id)")
+        return try await apiHandler.delete(endpoint: .command(id: id))
     }
     
     func sendCommand(_ id: Int) async throws {
@@ -46,6 +46,6 @@ extension HubConnectionHandler {
             throw HubConnectionError.noApiHandler
         }
         
-        return try await apiHandler.post(path: "/commands/\(id)/send")
+        return try await apiHandler.post(endpoint: .sendCommand(id: id))
     }
 }

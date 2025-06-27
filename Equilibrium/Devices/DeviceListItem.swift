@@ -26,9 +26,14 @@ struct DeviceListItem: View {
             }
             .frame(width: 50, height: 50)
             
-            Text(device.name)
-                .font(.title3)
-            
+            VStack(alignment: .leading) {
+                Text(device.name)
+                    .font(.title3)
+                    .bold()
+                Text(String(spacedStrings: [device.manufacturer, device.model]))
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
             Spacer()
         }
     }
@@ -38,6 +43,7 @@ struct DeviceListItem: View {
     List {
         DeviceListItem(device: .mockTV)
         DeviceListItem(device: .mockAmplifier)
+        DeviceListItem(device: Device(id: 3, name: "Test", manufacturer: nil, model: "Blenis", type: .other))
     }
     .withErrorHandling()
     .environment(MockHubConnectionHandler() as HubConnectionHandler)

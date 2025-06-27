@@ -14,7 +14,7 @@ extension HubConnectionHandler {
             throw HubConnectionError.noApiHandler
         }
         
-        return try await apiHandler.get(path: "/scenes/")
+        return try await apiHandler.get(endpoint: .scenes)
     }
     
     func getScene(_ id: Int) async throws -> Scene {
@@ -22,7 +22,7 @@ extension HubConnectionHandler {
             throw HubConnectionError.noApiHandler
         }
         
-        return try await apiHandler.get(path: "/scenes/\(id)/")
+        return try await apiHandler.get(endpoint: .scene(id: id))
     }
     
     func createScene(_ scene: Scene) async throws -> Scene {
@@ -30,7 +30,7 @@ extension HubConnectionHandler {
             throw HubConnectionError.noApiHandler
         }
         
-        return try await apiHandler.post(path: "/scene/", object: scene)
+        return try await apiHandler.post(endpoint: .scenes, object: scene)
     }
     
     func updateScene(_ scene: Scene) async throws -> Scene {
@@ -42,7 +42,7 @@ extension HubConnectionHandler {
             throw HubConnectionError.invalidInput
         }
         
-        return try await apiHandler.patch(path: "/scenes/\(sceneId)", object: scene)
+        return try await apiHandler.patch(endpoint: .scene(id: sceneId), object: scene)
     }
     
     func deleteScene(_ id: Int) async throws {
@@ -50,7 +50,7 @@ extension HubConnectionHandler {
             throw HubConnectionError.noApiHandler
         }
         
-        return try await apiHandler.delete(path: "/scenes/\(id)")
+        return try await apiHandler.delete(endpoint: .scene(id: id))
     }
     
     func getCurrentScene() async throws -> SceneStatusReport {
@@ -58,7 +58,7 @@ extension HubConnectionHandler {
             throw HubConnectionError.noApiHandler
         }
         
-        return try await apiHandler.get(path: "/scenes/current")
+        return try await apiHandler.get(endpoint: .currentScene)
     }
     
     func setCurrentScene(_ id: Int) async throws {
@@ -66,7 +66,7 @@ extension HubConnectionHandler {
             throw HubConnectionError.noApiHandler
         }
         
-        return try await apiHandler.post(path: "/scenes/\(id)/set_current")
+        return try await apiHandler.post(endpoint: .setCurrentScene(id: id))
     }
     
     func startScene(_ id: Int) async throws {
@@ -74,7 +74,7 @@ extension HubConnectionHandler {
             throw HubConnectionError.noApiHandler
         }
         
-        return try await apiHandler.post(path: "/scenes/\(id)/start")
+        return try await apiHandler.post(endpoint: .startScene(id: id))
     }
     
     func stopCurrentScene() async throws {
@@ -82,6 +82,6 @@ extension HubConnectionHandler {
             throw HubConnectionError.noApiHandler
         }
         
-        return try await apiHandler.post(path: "/scenes/stop")
+        return try await apiHandler.post(endpoint: .stopCurrentScene)
     }
 }

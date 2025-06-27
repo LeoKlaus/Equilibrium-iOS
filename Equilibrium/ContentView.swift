@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import EasyErrorHandling
 
 struct ContentView: View {
     
@@ -16,7 +17,7 @@ struct ContentView: View {
                     ScenesView()
                 }
                 Tab("Devices", systemImage: "cpu") {
-                    DeviceCreationView()
+                    DevicesView()
                 }
                 Tab("Settings", systemImage: "gear") {
                     SettingsView()
@@ -47,4 +48,6 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environment(MockHubConnectionHandler() as HubConnectionHandler)
+        .withErrorHandling()
 }

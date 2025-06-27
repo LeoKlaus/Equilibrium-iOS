@@ -15,7 +15,7 @@ extension HubConnectionHandler {
             throw HubConnectionError.noApiHandler
         }
         
-        self.devices = try await apiHandler.get(path: "/devices/")
+        self.devices = try await apiHandler.get(endpoint: .devices)
     }
     
     func getDevice(_ id: Int) async throws -> Device {
@@ -23,7 +23,7 @@ extension HubConnectionHandler {
             throw HubConnectionError.noApiHandler
         }
         
-        return try await apiHandler.get(path: "/devices/\(id)/")
+        return try await apiHandler.get(endpoint: .device(id: id))
     }
     
     func createDevice(_ device: Device) async throws -> Device {
@@ -31,7 +31,7 @@ extension HubConnectionHandler {
             throw HubConnectionError.noApiHandler
         }
         
-        return try await apiHandler.post(path: "/devices/", object: device)
+        return try await apiHandler.post(endpoint: .devices, object: device)
     }
     
     func updateDevice(_ device: Device) async throws -> Device {
@@ -43,7 +43,7 @@ extension HubConnectionHandler {
             throw HubConnectionError.invalidInput
         }
         
-        return try await apiHandler.patch(path: "/devices/\(deviceId)", object: device)
+        return try await apiHandler.patch(endpoint: .device(id: deviceId), object: device)
     }
     
     func deleteDevice(_ id: Int) async throws {
@@ -51,62 +51,6 @@ extension HubConnectionHandler {
             throw HubConnectionError.noApiHandler
         }
         
-        return try await apiHandler.delete(path: "/devices/\(id)")
-    }
-    
-    func createCommandGroup(deviceId: Int, commandGroup: CommandGroup) async throws -> CommandGroup {
-        guard let apiHandler else {
-            throw HubConnectionError.noApiHandler
-        }
-        
-        return try await apiHandler.post(path: "/devices/\(deviceId)/command_groups", object: commandGroup)
-    }
-    
-    func deleteCommandGroup(commandGroupId: Int) async throws {
-        guard let apiHandler else {
-            throw HubConnectionError.noApiHandler
-        }
-        
-        return try await apiHandler.delete(path: "/devices/command_groups/\(commandGroupId)")
-    }
-    
-    func getBleDevices() async throws -> [BleDevice] {
-        guard let apiHandler else {
-            throw HubConnectionError.noApiHandler
-        }
-        
-        return try await apiHandler.get(path: "/devices/ble_devices")
-    }
-    
-    func advertiseBle() async throws {
-        guard let apiHandler else {
-            throw HubConnectionError.noApiHandler
-        }
-        
-        return try await apiHandler.post(path: "/devices/start_ble_advertisement")
-    }
-    
-    func pairBle() async throws {
-        guard let apiHandler else {
-            throw HubConnectionError.noApiHandler
-        }
-        
-        return try await apiHandler.post(path: "/devices/start_ble_pairing")
-    }
-    
-    func connectBleDevices(_ address: String) async throws {
-        guard let apiHandler else {
-            throw HubConnectionError.noApiHandler
-        }
-        
-        return try await apiHandler.post(path: "/devices/connect_ble/\(address)")
-    }
-    
-    func disconnectBleDevices() async throws {
-        guard let apiHandler else {
-            throw HubConnectionError.noApiHandler
-        }
-        
-        return try await apiHandler.post(path: "/devices/disconnect_ble_devices")
+        return try await apiHandler.delete(endpoint: .device(id: id))
     }
 }

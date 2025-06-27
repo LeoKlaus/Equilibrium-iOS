@@ -14,7 +14,7 @@ extension HubConnectionHandler {
             throw HubConnectionError.noApiHandler
         }
         
-        return try await apiHandler.get(path: "/macros/")
+        return try await apiHandler.get(endpoint: .macros)
     }
     
     func getMacro(_ id: Int) async throws -> Macro {
@@ -22,7 +22,7 @@ extension HubConnectionHandler {
             throw HubConnectionError.noApiHandler
         }
         
-        return try await apiHandler.get(path: "/macros/\(id)/")
+        return try await apiHandler.get(endpoint: .macro(id: id))
     }
     
     func createMacro(_ macro: Macro) async throws -> Macro {
@@ -30,7 +30,7 @@ extension HubConnectionHandler {
             throw HubConnectionError.noApiHandler
         }
         
-        return try await apiHandler.post(path: "/macros/", object: macro)
+        return try await apiHandler.post(endpoint: .macros, object: macro)
     }
     
     func updateMacro(_ macro: Macro) async throws -> Macro {
@@ -42,7 +42,7 @@ extension HubConnectionHandler {
             throw HubConnectionError.invalidInput
         }
         
-        return try await apiHandler.patch(path: "/macros/\(macroId)", object: macro)
+        return try await apiHandler.patch(endpoint: .macro(id: macroId), object: macro)
     }
     
     func deleteMacro(_ id: Int) async throws {
@@ -50,6 +50,6 @@ extension HubConnectionHandler {
             throw HubConnectionError.noApiHandler
         }
         
-        return try await apiHandler.delete(path: "/macros/\(id)")
+        return try await apiHandler.delete(endpoint: .macro(id: id))
     }
 }

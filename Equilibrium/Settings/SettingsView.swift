@@ -29,7 +29,7 @@ struct SettingsView: View {
                 NavigationLink {
                     CommandListView()
                 } label: {
-                    Label("Commands", systemImage: "command")
+                    Label("Commands", systemImage: "terminal")
                 }
             }
             .navigationTitle("Settings")

@@ -9,6 +9,7 @@ import SwiftUI
 import EasyErrorHandling
 import EquilibriumAPI
 
+
 struct CreateCommandView: View {
     
     @Environment(\.dismiss) var dismiss
@@ -16,11 +17,18 @@ struct CreateCommandView: View {
     @EnvironmentObject var errorHandler: ErrorHandler
     @Environment(HubConnectionHandler.self) var connectionHandler
     
-    @State private var name: String = ""
-    @State private var button: RemoteButton = .other
+    @State private var tempName: String = ""
+    var name: String {
+        if tempName.isEmpty {
+            self.button.buttonRepresentation.name
+        } else {
+            tempName
+        }
+    }
+    @State var button: RemoteButton = .other
     @State private var type: CommandType = .ir
-    @State private var device: Device? = nil
-    @State private var commandGroup: EquilibriumAPI.CommandGroup? = nil
+    @State var device: Device?
+    @State var commandGroup: CommandGroupType = .other
     
     // Network command only
     @State private var host: String = ""
@@ -78,7 +86,8 @@ struct CreateCommandView: View {
             name: self.name,
             button: self.button,
             type: self.type,
-            commandGroupId: self.commandGroup?.id,
+            commandGroup: self.commandGroup,
+            deviceId: self.device?.id,
             host: networkHost,
             method: networkMethod,
             body: networkBody,
@@ -100,7 +109,7 @@ struct CreateCommandView: View {
         NavigationStack {
             List {
                 Section {
-                    TextField("Name", text: $name)
+                    TextField(name, text: $tempName)
                     Picker("Device", selection: $device) {
                         ForEach(self.connectionHandler.devices) { device in
                             Text(device.name).tag(device)
@@ -108,22 +117,20 @@ struct CreateCommandView: View {
                         Text("None").tag(nil as Device?)
                     }
                     .pickerStyle(.navigationLink)
-                    if let device {
-                        Picker("Command group", selection: $commandGroup) {
-                            ForEach(device.commandGroups ?? []) { commandGroup in
-                                Text(commandGroup.name).tag(commandGroup)
-                            }
-                            Divider()
-                            Text("None").tag(nil as EquilibriumAPI.CommandGroup?)
+                    
+                    Picker("Command group", selection: $commandGroup) {
+                        ForEach(CommandGroupType.allCases, id: \.rawValue) { commandGroup in
+                            Text(commandGroup.localizedName).tag(commandGroup)
                         }
                     }
+                
                     Picker("Type", selection: $type) {
                         Text("Infrared").tag(CommandType.ir)
                         Text("Bluetooth").tag(CommandType.bluetooth)
                         Text("Network request").tag(CommandType.network)
                         Text("Script").tag(CommandType.script)
                     }
-                    NavigationLink(destination: RemoteButtonPicker(button: $button, category: commandGroup?.type)) {
+                    NavigationLink(destination: RemoteButtonPicker(button: $button, category: commandGroup)) {
                         HStack {
                             Text("Button")
                             Spacer()
@@ -142,7 +149,8 @@ struct CreateCommandView: View {
                                 name: self.name,
                                 button: self.button,
                                 type: self.type,
-                                commandGroupId: self.commandGroup?.id
+                                commandGroup: self.commandGroup,
+                                deviceId: self.device?.id
                             ),
                             afterFinish:  {
                                 dismiss()
@@ -175,7 +183,7 @@ struct CreateCommandView: View {
     }
     
     var bluetoothSection: some View {
-        Section("Bluetooth Command") {
+        Section {
             Picker("Type", selection: $btActionType) {
                 ForEach(BluetoothActionType.allCases, id: \.hashValue) { type in
                     Text(type.rawValue).tag(type)
@@ -199,6 +207,13 @@ struct CreateCommandView: View {
                 TextField("KEY_CODE", text: $otherBtAction)
                     .autocorrectionDisabled()
                     .textCase(.uppercase)
+            }
+        } header: {
+            Text("Bluetooth Command")
+        } footer: {
+            if device?.bluetoothAddress?.isEmpty ?? true {
+                Text("This device has no associated Bluetooth address! You can still create this command, but you might need to configure the connection for it to work.")
+                    .foregroundStyle(.red)
             }
         }
     }
@@ -241,6 +256,12 @@ struct CreateCommandView: View {
 
 #Preview {
     CreateCommandView()
+        .withErrorHandling()
+        .environment(MockHubConnectionHandler() as HubConnectionHandler)
+}
+
+#Preview("With Device") {
+    CreateCommandView(device: .mockTV, commandGroup: .power)
         .withErrorHandling()
         .environment(MockHubConnectionHandler() as HubConnectionHandler)
 }

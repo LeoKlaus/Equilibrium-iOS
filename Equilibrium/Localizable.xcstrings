@@ -4,6 +4,12 @@
     "" : {
 
     },
+    "-" : {
+
+    },
+    "%@ is now ready to use!" : {
+
+    },
     "%@:%@" : {
       "localizations" : {
         "en" : {
@@ -47,7 +53,16 @@
     "192.168.0.123" : {
 
     },
+    "Add %@ commands" : {
+
+    },
+    "Add any remaining buttons here." : {
+
+    },
     "Add Command" : {
+
+    },
+    "Add commands" : {
 
     },
     "Add Device" : {
@@ -57,6 +72,9 @@
 
     },
     "Amplifier" : {
+
+    },
+    "Available Commands" : {
 
     },
     "Back" : {
@@ -104,7 +122,7 @@
     "Channel Up" : {
 
     },
-    "Colored buttons" : {
+    "Color" : {
 
     },
     "Command group" : {
@@ -123,6 +141,12 @@
 
     },
     "Connected" : {
+
+    },
+    "Couldn't get the newly created device from the hub. Please try adding commands again." : {
+
+    },
+    "Create one now?" : {
 
     },
     "Creating script commands is currently not supported" : {
@@ -174,6 +198,33 @@
     "Display" : {
 
     },
+    "Does the original remote of your device have any Channel buttons:\n- Channel Up\n- Channel Down" : {
+
+    },
+    "Does the original remote of your device have any Colored buttons?" : {
+
+    },
+    "Does the original remote of your device have any Input buttons?" : {
+
+    },
+    "Does the original remote of your device have any Navigation buttons:\n- Up\n- Down\n- Left\n- Right\n- Select/Ok\n- Back\n- Menu\n- Exit\n- Guide" : {
+
+    },
+    "Does the original remote of your device have any Numeric buttons?" : {
+
+    },
+    "Does the original remote of your device have any Transport buttons:\n- Play/Pause\n- Stop\n- Fast Forward\n- Rewind\n- Record" : {
+
+    },
+    "Does the original remote of your device have any Volume buttons:\n- Volume Up\n- Volume Down\n- Mute" : {
+
+    },
+    "Does the remote have any **Volume** buttons:\n- *Volume Up*\n- *Volume Down*\n- *Mute*" : {
+
+    },
+    "Done" : {
+
+    },
     "Done, command %@ created!" : {
 
     },
@@ -204,6 +255,17 @@
     "Guide" : {
 
     },
+    "Haha das ist ein test" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benis"
+          }
+        }
+      }
+    },
     "HEAD" : {
 
     },
@@ -222,13 +284,25 @@
     "If this device can be controlled with a bluetooth keyboard (like an Apple TV), Equilibrium can connect to it that way." : {
 
     },
+    "If you want to control the device via Bluetooth, select yes for any group you want to create commands for." : {
+
+    },
     "Image" : {
+
+    },
+    "In the next steps, you will teach Equilibrium the different commands to control your %@." : {
+
+    },
+    "In the next steps, you will teach Equilibrium the different commands to control your %@.\nThis guide will ask for different groups of commands and create them in Equilibrium.\n\nTo begin, get the original remote of this device and check if it has any **Power** buttons:\n- *Power Toggle*\n- *Power On*\n- *Power Off*" : {
 
     },
     "Infrared" : {
 
     },
     "Infrared Command" : {
+
+    },
+    "Input" : {
 
     },
     "Integration" : {
@@ -288,6 +362,9 @@
     "Network request" : {
 
     },
+    "Next" : {
+
+    },
     "Next Track" : {
 
     },
@@ -295,6 +372,9 @@
 
     },
     "No commands found" : {
+
+    },
+    "No devices found." : {
 
     },
     "No images found" : {
@@ -375,6 +455,9 @@
     "Record" : {
 
     },
+    "Recorded Commands" : {
+
+    },
     "Recording was cancelled by the hub. Please try again." : {
 
     },
@@ -397,6 +480,9 @@
 
     },
     "Save" : {
+
+    },
+    "Saving device..." : {
 
     },
     "Scenes" : {
@@ -438,7 +524,19 @@
     "Stop" : {
 
     },
+    "Test %@" : {
+
+    },
+    "This device doesn't have %@ commands" : {
+
+    },
+    "This device has no associated Bluetooth address! You can still create this command, but you might need to configure the connection for it to work." : {
+
+    },
     "This is taking longer than expected. If you know your instance IP and port, use the manual configuration option below." : {
+
+    },
+    "To begin, get the original remote of this device and check if it has any Power buttons:\n- Power toggle\n- Power on\n- Power off" : {
 
     },
     "To pair Equilibrium to a new bluetooth device, enable discovery here first and then connect to **Equilibrium Virtual Keyboard** from the bluetooth settings of your device. For some devices (notably Apple TVs), pairing does not start automatically after connecting.\nIn that case, use the **Pair devices** button below to manually initiate pairing." : {

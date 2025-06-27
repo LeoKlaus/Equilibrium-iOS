@@ -14,7 +14,7 @@ extension HubConnectionHandler {
             throw HubConnectionError.noApiHandler
         }
         
-        return try await apiHandler.get(path: "/images/")
+        return try await apiHandler.get(endpoint: .images)
     }
     
     func getImage(_ id: Int) async throws -> Data {
@@ -22,7 +22,7 @@ extension HubConnectionHandler {
             throw HubConnectionError.noApiHandler
         }
         
-        return try await apiHandler.get(path: "/images/\(id)/")
+        return try await apiHandler.get(endpoint: .image(id: id))
     }
     
     func uploadImage(fileURL: URL) async throws -> UserImage {
@@ -30,7 +30,7 @@ extension HubConnectionHandler {
             throw HubConnectionError.noApiHandler
         }
         
-        return try await apiHandler.postMultipartForm(path: "/images/", fileURL: fileURL)
+        return try await apiHandler.postMultipartForm(endpoint: .images, fileURL: fileURL)
     }
     
     func deleteImage(_ id: Int) async throws {
@@ -38,6 +38,6 @@ extension HubConnectionHandler {
             throw HubConnectionError.noApiHandler
         }
         
-        return try await apiHandler.delete(path: "/images/\(id)")
+        return try await apiHandler.delete(endpoint: .image(id: id))
     }
 }
