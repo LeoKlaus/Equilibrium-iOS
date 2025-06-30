@@ -59,7 +59,7 @@ struct DeviceListView: View {
             }
             
             ForEach(connectionHandler.devices) { device in
-                NavigationLink(destination: Text(verbatim: "Nothing to see here...")) {
+                NavigationLink(destination: DeviceDetailView(device: device)) {
                     DeviceListItem(device: device)
                 }.contextMenu {
                     if let toggleCommandId = device.commands?.first(where: { $0.button == .powerToggle })?.id {

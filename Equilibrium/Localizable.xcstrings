@@ -74,6 +74,9 @@
     "Add Scene" : {
 
     },
+    "All devices included in either start or stop macro and the associated bluetooth device (if applicable) will be added automatically. You can still manually add devices to this scene." : {
+
+    },
     "Amplifier" : {
 
     },
@@ -594,6 +597,12 @@
 
     },
     "Transport" : {
+
+    },
+    "Turn %@ off" : {
+
+    },
+    "Turn %@ on" : {
 
     },
     "Turn Off" : {

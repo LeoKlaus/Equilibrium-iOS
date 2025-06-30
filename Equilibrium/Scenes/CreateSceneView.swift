@@ -33,6 +33,8 @@ struct CreateSceneView: View {
     @State private var startMacro: Macro? = nil
     @State private var stopMacro: Macro? = nil
     
+    @State private var devices: [Device] = []
+    
     //@State private var keymap: String? = nil
     
     init(scene: EquilibriumAPI.Scene) {
@@ -65,8 +67,8 @@ struct CreateSceneView: View {
     func saveScene() {
         self.isSaving = true
         
-        //let scene = EquilibriumAPI.Scene(id: self.id, name: self.name, imageId: self.image?.id, bluetoothAddress: self.bleDevice?.address ?? self.bluetoothAddress, keymap: self.keymap, startMacroId: self.startMacro?.id, stopMacroId: self.stopMacro?.id)
-        let scene = EquilibriumAPI.Scene(id: self.id, name: self.name, imageId: self.image?.id, bluetoothAddress: self.bleDevice?.address ?? self.bluetoothAddress, startMacroId: self.startMacro?.id, stopMacroId: self.stopMacro?.id)
+        //let scene = EquilibriumAPI.Scene(id: self.id, name: self.name, imageId: self.image?.id, bluetoothAddress: self.bleDevice?.address ?? self.bluetoothAddress, keymap: self.keymap, deviceIds: self.devices.compactMap(\.id), startMacroId: self.startMacro?.id, stopMacroId: self.stopMacro?.id)
+        let scene = EquilibriumAPI.Scene(id: self.id, name: self.name, imageId: self.image?.id, bluetoothAddress: self.bleDevice?.address ?? self.bluetoothAddress, deviceIds: self.devices.compactMap(\.id), startMacroId: self.startMacro?.id, stopMacroId: self.stopMacro?.id)
         
         
         Task {
@@ -138,6 +140,29 @@ struct CreateSceneView: View {
                 Text("Macros")
             } footer: {
                 Text("These macros will run every time the scene is started or stopped. You should use these to turn on and off devices and change inputs as needed.")
+            }
+            
+            Section {
+                NavigationLink(destination: DevicesPicker(selectedDevices: self.$devices)) {
+                    HStack {
+                        Text("Devices")
+                        Spacer()
+                        if devices.isEmpty {
+                            Text("None")
+                                .foregroundStyle(.secondary)
+                        } else if devices.count == 1, let deviceName = devices.first?.name {
+                            Text(deviceName)
+                                .foregroundStyle(.secondary)
+                        } else {
+                            Text(String(devices.count))
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                }
+            } header: {
+                Text("Devices")
+            } footer: {
+                Text("All devices included in either start or stop macro and the associated bluetooth device (if applicable) will be added automatically. You can still manually add devices to this scene.")
             }
             
             /*Section {

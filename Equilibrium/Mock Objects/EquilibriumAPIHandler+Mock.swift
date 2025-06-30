@@ -28,7 +28,7 @@ class MockApiHandler: EquilibriumAPIHandler {
         case .sendCommand(_):
             throw URLError(.badURL)
         case .devices:
-            return try JSONEncoder().encode([Device.mockTV, Device.mockAmplifier])
+            return try JSONEncoder().encode([Device.mockTV, Device.mockAmplifier, .mockPlayer])
         case .device(_):
             throw URLError(.badURL)
         case .bluetoothDevices:

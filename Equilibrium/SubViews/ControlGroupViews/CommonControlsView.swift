@@ -33,7 +33,7 @@ struct CommonControlsView: View {
     }
     
     var body: some View {
-        Grid(horizontalSpacing: 30) {
+        Grid(horizontalSpacing: 45) {
             GridRow {
                 if let audioController {
                     VolumeControlGroup(commands: audioController.commands ?? [])
