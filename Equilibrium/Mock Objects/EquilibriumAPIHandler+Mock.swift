@@ -52,18 +52,19 @@ class MockApiHandler: EquilibriumAPIHandler {
             }
             return data
         case .macros:
-            throw URLError(.badURL)
+            return try JSONEncoder().encode([Macro.mock, .mockStart, .mockStop])
         case .macro(_):
             throw URLError(.badURL)
         case .scenes:
-            throw URLError(.badURL)
+            return try JSONEncoder().encode([Scene.mock])
         case .scene(_):
             throw URLError(.badURL)
-        case .currentScene:
-            throw URLError(.badURL)
         case .startScene(_):
-            throw URLError(.badURL)
+            try await Task.sleep(for: .seconds(0.5))
+            return Data("Scene started...".utf8)
         case .setCurrentScene(_):
+            throw URLError(.badURL)
+        case .getKeymapSuggestion(_):
             throw URLError(.badURL)
         case .stopCurrentScene:
             throw URLError(.badURL)

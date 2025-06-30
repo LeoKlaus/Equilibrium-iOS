@@ -34,7 +34,9 @@ extension HubConnectionHandler {
                 for try await message in socketStream {
                     switch message {
                     case .data(let data):
-                        self.currentSceneStatus = try JSONDecoder().decode(StatusReport.self, from: data)
+                        let newStatus = try JSONDecoder().decode(StatusReport.self, from: data)
+                        self.currentSceneStatus = newStatus
+                        Self.logger.debug("Received status update: \(String(describing: newStatus), privacy: .public)")
                     case .string(let string):
                         guard let data = string.data(using: .utf8) else {
                             Self.logger.error("Received string from hub but couldn't convert to data")
@@ -43,7 +45,9 @@ extension HubConnectionHandler {
                             }
                             break
                         }
-                        self.currentSceneStatus = try JSONDecoder().decode(StatusReport.self, from: data)
+                        let newStatus = try JSONDecoder().decode(StatusReport.self, from: data)
+                        self.currentSceneStatus = newStatus
+                        Self.logger.debug("Received status update: \(String(describing: newStatus), privacy: .public)")
                     @unknown default:
                         Self.logger.error("Received unknown response")
                         DispatchQueue.main.async {
@@ -54,7 +58,7 @@ extension HubConnectionHandler {
             } catch {
                 Self.logger.error("Encountered an error parsing hub response: \(error.localizedDescription, privacy: .public)")
                 DispatchQueue.main.async {
-                    ErrorHandler.shared.handle("Received websocket message of unknown type", while: "Receiving websocket")
+                    ErrorHandler.shared.handle(error, while: "Receiving websocket")
                 }
             }
             

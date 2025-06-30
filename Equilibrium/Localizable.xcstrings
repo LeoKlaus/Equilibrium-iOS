@@ -71,6 +71,9 @@
     "Add Image" : {
 
     },
+    "Add Scene" : {
+
+    },
     "Amplifier" : {
 
     },
@@ -135,9 +138,6 @@
 
     },
     "Connected" : {
-
-    },
-    "Couldn't get the newly created device from the hub. Please try adding commands again." : {
 
     },
     "Create one now?" : {
@@ -225,6 +225,9 @@
     "Down" : {
 
     },
+    "Edit %@" : {
+
+    },
     "Enable discovery" : {
 
     },
@@ -302,6 +305,12 @@
     "Integration" : {
 
     },
+    "Invert Images in Dark Mode" : {
+
+    },
+    "Inverts all images for scenes and devices while in dark mode (especially useful for black & white icons)." : {
+
+    },
     "Key" : {
 
     },
@@ -317,10 +326,19 @@
     "Loading devices from hub..." : {
 
     },
+    "Loading devices..." : {
+
+    },
     "Loading images from hub..." : {
 
     },
+    "Loading scenes..." : {
+
+    },
     "Looking for Equilibrium instances in your network..." : {
+
+    },
+    "Macros" : {
 
     },
     "Manual configuration" : {
@@ -372,6 +390,9 @@
 
     },
     "No images found" : {
+
+    },
+    "No scenes found." : {
 
     },
     "None" : {
@@ -473,7 +494,19 @@
     "Save" : {
 
     },
+    "Save changes" : {
+
+    },
+    "Save Changes" : {
+
+    },
+    "Save Scene" : {
+
+    },
     "Saving device..." : {
+
+    },
+    "Saving scene..." : {
 
     },
     "Scenes" : {
@@ -509,13 +542,37 @@
     "Sleep" : {
 
     },
+    "Start %@" : {
+
+    },
+    "Start Macro" : {
+
+    },
     "Start Recording %@" : {
+
+    },
+    "Starting %@..." : {
 
     },
     "Stop" : {
 
     },
+    "Stop %@" : {
+
+    },
+    "Stop Macro" : {
+
+    },
+    "Stopping %@..." : {
+
+    },
+    "Test" : {
+
+    },
     "Test %@" : {
+
+    },
+    "These macros will run every time the scene is started or stopped. You should use these to turn on and off devices and change inputs as needed." : {
 
     },
     "This device doesn't have %@ commands" : {
@@ -531,6 +588,9 @@
 
     },
     "To pair Equilibrium to a new bluetooth device, enable discovery here first and then connect to **Equilibrium Virtual Keyboard** from the bluetooth settings of your device. For some devices (notably Apple TVs), pairing does not start automatically after connecting.\nIn that case, use the **Pair devices** button below to manually initiate pairing." : {
+
+    },
+    "Toggle Power" : {
 
     },
     "Transport" : {
@@ -579,9 +639,6 @@
 
     },
     "Yes" : {
-
-    },
-    "You don't have any scenes yet, do you want to create one?" : {
 
     }
   },

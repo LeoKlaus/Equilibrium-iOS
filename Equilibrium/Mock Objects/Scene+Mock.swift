@@ -16,7 +16,9 @@ extension Scene {
         bluetoothAddress: "XX:XX:XX:XX:XX:XX",
         keymap: "apple_tv",
         devices: [
-            
+            .mockTV,
+            .mockPlayer,
+            .mockAmplifier
         ],
         startMacro: .mockStart,
         stopMacro: .mockStop,

@@ -11,6 +11,8 @@ struct SettingsView: View {
     
     @State private var navigationPath = NavigationPath()
     
+    @AppStorage(UserDefaultKey.invertImagesInDarkMode.rawValue, store: UserDefaults(suiteName: "group.me.wehrfritz.Equilibrium")) var invertImagesInDarkMode: Bool = true
+    
     var body: some View {
         NavigationStack(path: self.$navigationPath) {
             List {
@@ -30,6 +32,12 @@ struct SettingsView: View {
                     CommandListView()
                 } label: {
                     Label("Commands", systemImage: "terminal")
+                }
+                
+                Section {
+                    Toggle("Invert Images in Dark Mode", isOn: $invertImagesInDarkMode)
+                } footer: {
+                    Text("Inverts all images for scenes and devices while in dark mode (especially useful for black & white icons).")
                 }
             }
             .navigationTitle("Settings")

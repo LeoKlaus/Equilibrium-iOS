@@ -16,6 +16,12 @@ class MockHubConnectionHandler: HubConnectionHandler {
         self.apiHandler = MockApiHandler()
     }
     
+    init(sceneStatus: StatusReport) {
+        super.init()
+        self.apiHandler = MockApiHandler()
+        self.currentSceneStatus = sceneStatus
+    }
+    
     //override var scenes: [Scene] = []
     
     //override var devices: [Device] = []

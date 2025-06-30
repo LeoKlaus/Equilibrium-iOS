@@ -7,7 +7,6 @@
 
 import SwiftUI
 import EquilibriumAPI
-import EasyErrorHandling
 
 struct DeviceListItem: View {
     
@@ -45,6 +44,5 @@ struct DeviceListItem: View {
         DeviceListItem(device: .mockAmplifier)
         DeviceListItem(device: Device(id: 3, name: "Test", manufacturer: nil, model: "Blenis", type: .other))
     }
-    .withErrorHandling()
     .environment(MockHubConnectionHandler() as HubConnectionHandler)
 }

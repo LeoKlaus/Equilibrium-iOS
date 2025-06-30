@@ -38,6 +38,7 @@ struct ImageListView: View {
     }
     
     @Sendable func getImages() async {
+        self.isLoading = true
         do {
             self.images = try await connectionHandler.getImages()
             self.isLoading = false

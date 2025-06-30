@@ -14,7 +14,9 @@ extension HubConnectionHandler {
             throw HubConnectionError.noApiHandler
         }
         
-        return try await apiHandler.get(endpoint: .scenes)
+        self.scenes = try await apiHandler.get(endpoint: .scenes)
+        
+        return self.scenes
     }
     
     func getScene(_ id: Int) async throws -> Scene {
@@ -53,12 +55,12 @@ extension HubConnectionHandler {
         return try await apiHandler.delete(endpoint: .scene(id: id))
     }
     
-    func getCurrentScene() async throws -> StatusReport {
+    func getCurrentStatus() async throws -> StatusReport {
         guard let apiHandler else {
             throw HubConnectionError.noApiHandler
         }
         
-        return try await apiHandler.get(endpoint: .currentScene)
+        return try await apiHandler.get(endpoint: .systemStatus)
     }
     
     func setCurrentScene(_ id: Int) async throws {

@@ -11,10 +11,13 @@ import EquilibriumAPI
 
 struct BasicDeviceCreationView: View {
     
+    @Environment(\.dismiss) var dismiss
+    
     @EnvironmentObject var errorHandler: ErrorHandler
     @Environment(HubConnectionHandler.self) var connectionHandler
     
     let isEditView: Bool
+    let id: Int?
     
     @State private var name: String = ""
     @State private var manufacturer: String = ""
@@ -24,18 +27,32 @@ struct BasicDeviceCreationView: View {
     @State private var image: UserImage? = nil
     
     @State private var bleDevice: BleDevice? = nil
+    @State private var bluetoothAddress: String? = nil
     
     @State private var isSaving: Bool = false
-    @State private var showCommandCreation: Bool = false
     
     @State private var createdDevice: Device? = nil
     
     init() {
         self.isEditView = false
+        self.id = nil
     }
     
     init(device: Device) {
         self.isEditView = true
+        
+        self.id = device.id
+        
+        self._name = State(initialValue: device.name)
+        self._manufacturer = State(initialValue: device.manufacturer ?? "")
+        self._model = State(initialValue: device.model ?? "")
+        self._type = State(initialValue: device.type)
+        
+        self._image = State(initialValue: device.image)
+        
+        // TODO: Get matching bluetooth device
+        //self._bleDevice = State(initialValue: device.bluetoothAddress ?? "")
+        self._bluetoothAddress = State(initialValue: device.bluetoothAddress)
     }
     
     func saveDevice() {
@@ -51,12 +68,17 @@ struct BasicDeviceCreationView: View {
             modelStr = self.model
         }
         
-        let device = Device(name: self.name, manufacturer: manufacturerStr, model: modelStr, type: self.type, bluetoothAddress: self.bleDevice?.address, imageId: self.image?.id)
+        
+        let device = Device(id: self.id, name: self.name, manufacturer: manufacturerStr, model: modelStr, type: self.type, bluetoothAddress: self.bleDevice?.address ?? self.bluetoothAddress, imageId: self.image?.id)
         
         Task {
             do {
-                self.createdDevice = try await self.connectionHandler.createDevice(device)
-                self.showCommandCreation = true
+                if isEditView {
+                    _ = try await self.connectionHandler.updateDevice(device)
+                    self.dismiss()
+                } else {
+                    self.createdDevice = try await self.connectionHandler.createDevice(device)
+                }
             } catch {
                 self.errorHandler.handle(error, while: "saving device")
             }
@@ -91,11 +113,16 @@ struct BasicDeviceCreationView: View {
             }
             
             Section {
-                NavigationLink(destination: BluetoothDeviceListView(selectedDevice: self.$bleDevice)) {
+                NavigationLink {
+                    BluetoothDeviceListView(selectedDevice: self.$bleDevice)
+                        .onDisappear {
+                            self.bluetoothAddress = nil
+                        }
+                } label: {
                     HStack {
                         Text("Device")
                         Spacer()
-                        Text(self.bleDevice?.name ?? "None")
+                        Text(self.bleDevice?.name ?? self.bluetoothAddress ?? "None")
                             .foregroundStyle(.secondary)
                     }
                 }
@@ -106,24 +133,24 @@ struct BasicDeviceCreationView: View {
             }
             
             Section {
-                Button(action: saveDevice) {
+                Button(action: self.saveDevice) {
                     if isSaving {
                         HStack {
                             ProgressView()
                             Text("Saving device...")
                         }
                     } else {
-                        Label("Add commands", systemImage: "terminal")
+                        if isEditView {
+                            Label("Save changes", systemImage: "square.and.arrow.down")
+                        } else {
+                            Label("Add commands", systemImage: "terminal")
+                        }
                     }
                 }
                 .disabled(isSaving)
             }
-            .navigationDestination(isPresented: $showCommandCreation) {
-                if let createdDevice {
-                    DeviceCommandAssistant(device: createdDevice)
-                } else {
-                    Text("Couldn't get the newly created device from the hub. Please try adding commands again.")
-                }
+            .navigationDestination(item: $createdDevice) { device in
+                DeviceCommandAssistant(device: device)
             }
         }
     }
@@ -137,9 +164,9 @@ struct BasicDeviceCreationView: View {
     .environment(MockHubConnectionHandler() as HubConnectionHandler)
 }
 
-#Preview("Create") {
+#Preview("Update") {
     NavigationStack {
-        BasicDeviceCreationView()
+        BasicDeviceCreationView(device: .mockTV)
     }
     .withErrorHandling()
     .environment(MockHubConnectionHandler() as HubConnectionHandler)

@@ -23,14 +23,41 @@ extension Device {
         macros: []
     )
     
-    static let mockAmplifier = Device(
+    static let mockPlayer = Device(
         id: 2,
+        name: "Apple TV",
+        manufacturer: "Apple",
+        model: "Apple TV 4K",
+        type: .player,
+        commands: [
+            .mockPowerToggle,
+            .mockUp,
+            .mockDown,
+            .mockLeft,
+            .mockRight,
+            .mockSelect,
+            .mockBack,
+            .mockMenu,
+            .mockExit,
+            .mockGuide,
+            .mockChannelUp,
+            .mockChannelDown
+        ],
+        scenes: [],
+        macros: []
+    )
+    
+    static let mockAmplifier = Device(
+        id: 3,
         name: "Denon Amplifier",
         manufacturer: "Denon",
         model: "AVR-X2800H",
         type: .amplifier,
         commands: [
-            .mockPowerToggle
+            .mockPowerToggle,
+            .mockVolumeUp,
+            .mockVolumeDown,
+            .mockMute
         ],
         scenes: [],
         macros: []

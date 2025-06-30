@@ -11,8 +11,12 @@ import EasyErrorHandling
 
 struct ImageView: View {
     
+    @Environment(\.colorScheme) var colorScheme
+    
     @EnvironmentObject var errorHandler: ErrorHandler
     @Environment(HubConnectionHandler.self) var connectionHandler
+    
+    @AppStorage(UserDefaultKey.invertImagesInDarkMode.rawValue, store: UserDefaults(suiteName: "group.me.wehrfritz.Equilibrium")) var invertImagesInDarkMode: Bool = true
     
     let image: UserImage
     
@@ -32,10 +36,18 @@ struct ImageView: View {
     var body: some View {
         VStack {
             if let imageData, let uiImage = UIImage(data: imageData) {
-                Image(uiImage: uiImage)
-                    .resizable()
-                    .scaledToFit()
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                if invertImagesInDarkMode && colorScheme == .dark {
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .scaledToFit()
+                        .colorInvert()
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                } else {
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                }
             } else {
                 ProgressView()
                     .task(getImageData)

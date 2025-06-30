@@ -9,10 +9,41 @@
 /* Begin PBXBuildFile section */
 		4AB4321C2E0441190081E4B0 /* EasyErrorHandling in Frameworks */ = {isa = PBXBuildFile; productRef = 4AB4321B2E0441190081E4B0 /* EasyErrorHandling */; };
 		4ABCD81C2E09B95100B936F1 /* EquilibriumAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 4ABCD81B2E09B95100B936F1 /* EquilibriumAPI */; };
+		4AD60E632E11B05A00B312D9 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD60E622E11B05A00B312D9 /* WidgetKit.framework */; };
+		4AD60E652E11B05A00B312D9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD60E642E11B05A00B312D9 /* SwiftUI.framework */; };
+		4AD60E762E11B05B00B312D9 /* Equilibrium-WidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 4AD60E602E11B05A00B312D9 /* Equilibrium-WidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4AD60E742E11B05B00B312D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4AB432042E043DFA0081E4B0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4AD60E5F2E11B05A00B312D9;
+			remoteInfo = "Equilibrium-WidgetsExtension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4AD60E7B2E11B05B00B312D9 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				4AD60E762E11B05B00B312D9 /* Equilibrium-WidgetsExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4AB4320C2E043DFB0081E4B0 /* Equilibrium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Equilibrium.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AD60E602E11B05A00B312D9 /* Equilibrium-WidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Equilibrium-WidgetsExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AD60E622E11B05A00B312D9 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		4AD60E642E11B05A00B312D9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		4AD60E7C2E11B0E600B312D9 /* Equilibrium-WidgetsExtensionRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Equilibrium-WidgetsExtensionRelease.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -23,6 +54,13 @@
 			);
 			target = 4AB4320B2E043DFB0081E4B0 /* Equilibrium */;
 		};
+		4AD60E7A2E11B05B00B312D9 /* Exceptions for "Equilibrium-Widgets" folder in "Equilibrium-WidgetsExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 4AD60E5F2E11B05A00B312D9 /* Equilibrium-WidgetsExtension */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -32,6 +70,14 @@
 				4AB435B32E097C0D0081E4B0 /* Exceptions for "Equilibrium" folder in "Equilibrium" target */,
 			);
 			path = Equilibrium;
+			sourceTree = "<group>";
+		};
+		4AD60E662E11B05A00B312D9 /* Equilibrium-Widgets */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				4AD60E7A2E11B05B00B312D9 /* Exceptions for "Equilibrium-Widgets" folder in "Equilibrium-WidgetsExtension" target */,
+			);
+			path = "Equilibrium-Widgets";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -46,13 +92,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4AD60E5D2E11B05A00B312D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4AD60E652E11B05A00B312D9 /* SwiftUI.framework in Frameworks */,
+				4AD60E632E11B05A00B312D9 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		4AB432032E043DFA0081E4B0 = {
 			isa = PBXGroup;
 			children = (
+				4AD60E7C2E11B0E600B312D9 /* Equilibrium-WidgetsExtensionRelease.entitlements */,
 				4AB4320E2E043DFB0081E4B0 /* Equilibrium */,
+				4AD60E662E11B05A00B312D9 /* Equilibrium-Widgets */,
+				4AD60E612E11B05A00B312D9 /* Frameworks */,
 				4AB4320D2E043DFB0081E4B0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,8 +119,18 @@
 			isa = PBXGroup;
 			children = (
 				4AB4320C2E043DFB0081E4B0 /* Equilibrium.app */,
+				4AD60E602E11B05A00B312D9 /* Equilibrium-WidgetsExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		4AD60E612E11B05A00B312D9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4AD60E622E11B05A00B312D9 /* WidgetKit.framework */,
+				4AD60E642E11B05A00B312D9 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -75,10 +143,12 @@
 				4AB432082E043DFB0081E4B0 /* Sources */,
 				4AB432092E043DFB0081E4B0 /* Frameworks */,
 				4AB4320A2E043DFB0081E4B0 /* Resources */,
+				4AD60E7B2E11B05B00B312D9 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4AD60E752E11B05B00B312D9 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				4AB4320E2E043DFB0081E4B0 /* Equilibrium */,
@@ -92,6 +162,28 @@
 			productReference = 4AB4320C2E043DFB0081E4B0 /* Equilibrium.app */;
 			productType = "com.apple.product-type.application";
 		};
+		4AD60E5F2E11B05A00B312D9 /* Equilibrium-WidgetsExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4AD60E772E11B05B00B312D9 /* Build configuration list for PBXNativeTarget "Equilibrium-WidgetsExtension" */;
+			buildPhases = (
+				4AD60E5C2E11B05A00B312D9 /* Sources */,
+				4AD60E5D2E11B05A00B312D9 /* Frameworks */,
+				4AD60E5E2E11B05A00B312D9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				4AD60E662E11B05A00B312D9 /* Equilibrium-Widgets */,
+			);
+			name = "Equilibrium-WidgetsExtension";
+			packageProductDependencies = (
+			);
+			productName = "Equilibrium-WidgetsExtension";
+			productReference = 4AD60E602E11B05A00B312D9 /* Equilibrium-WidgetsExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -103,6 +195,9 @@
 				LastUpgradeCheck = 2600;
 				TargetAttributes = {
 					4AB4320B2E043DFB0081E4B0 = {
+						CreatedOnToolsVersion = 26.0;
+					};
+					4AD60E5F2E11B05A00B312D9 = {
 						CreatedOnToolsVersion = 26.0;
 					};
 				};
@@ -126,12 +221,20 @@
 			projectRoot = "";
 			targets = (
 				4AB4320B2E043DFB0081E4B0 /* Equilibrium */,
+				4AD60E5F2E11B05A00B312D9 /* Equilibrium-WidgetsExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		4AB4320A2E043DFB0081E4B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4AD60E5E2E11B05A00B312D9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -148,7 +251,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4AD60E5C2E11B05A00B312D9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4AD60E752E11B05B00B312D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4AD60E5F2E11B05A00B312D9 /* Equilibrium-WidgetsExtension */;
+			targetProxy = 4AD60E742E11B05B00B312D9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		4AB432152E043DFB0081E4B0 /* Debug */ = {
@@ -274,7 +392,7 @@
 		4AB432182E043DFB0081E4B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = TempIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -321,7 +439,7 @@
 		4AB432192E043DFB0081E4B0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = TempIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -365,6 +483,70 @@
 			};
 			name = Release;
 		};
+		4AD60E782E11B05B00B312D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 28KGVFV686;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Equilibrium-Widgets/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Equilibrium-Widgets";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.wehrfritz.Equilibrium.Equilibrium-Widgets";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4AD60E792E11B05B00B312D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "Equilibrium-WidgetsExtensionRelease.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 28KGVFV686;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Equilibrium-Widgets/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Equilibrium-Widgets";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.wehrfritz.Equilibrium.Equilibrium-Widgets";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -382,6 +564,15 @@
 			buildConfigurations = (
 				4AB432182E043DFB0081E4B0 /* Debug */,
 				4AB432192E043DFB0081E4B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4AD60E772E11B05B00B312D9 /* Build configuration list for PBXNativeTarget "Equilibrium-WidgetsExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4AD60E782E11B05B00B312D9 /* Debug */,
+				4AD60E792E11B05B00B312D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

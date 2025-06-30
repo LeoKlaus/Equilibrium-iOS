@@ -21,6 +21,7 @@ struct CommandListItem: View {
                     Text(command.device?.name ?? "No device")
                     Text("-")
                     Text(command.commandGroup.localizedName)
+                    Spacer()
                 }
                 .foregroundStyle(.secondary)
             } icon: {
