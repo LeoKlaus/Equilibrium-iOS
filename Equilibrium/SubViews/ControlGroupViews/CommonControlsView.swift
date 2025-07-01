@@ -13,6 +13,12 @@ struct CommonControlsView: View {
     
     let devices: [Device]
     
+    
+    var inputController: Device? {
+        self.devices.first(where: { $0.type == .display }) ??
+        self.devices.first(where: { $0.type == .other })
+    }
+    
     var audioController: Device? {
         self.devices.first(where: { $0.type == .amplifier }) ??
         self.devices.first(where: { $0.type == .player }) ??
@@ -33,7 +39,11 @@ struct CommonControlsView: View {
     }
     
     var body: some View {
-        Grid(horizontalSpacing: 45) {
+        Grid(horizontalSpacing: 45, verticalSpacing: 45) {
+            if let inputController {
+                InputControlGroup(commands: inputController.commands ?? [])
+                    .frame(width: 250)
+            }
             GridRow {
                 if let audioController {
                     VolumeControlGroup(commands: audioController.commands ?? [])
@@ -45,7 +55,10 @@ struct CommonControlsView: View {
                     ChannelControlGroup(commands: channelController.commands ?? [])
                 }
             }
+            TransportControlGroup(commands: channelController?.commands ?? [])
+            ColoredButtonControlGroup(commands: channelController?.commands ?? [])
         }
+        .foregroundStyle(.primary)
     }
 }
 

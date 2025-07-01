@@ -57,9 +57,21 @@ struct SceneDetailView: View {
     var body: some View {
         TabView {
             CommonControlsView(devices: scene.devices ?? [])
+                .tabItem{
+                    Label("Common Controls", systemImage: "dpad.fill")
+                }
+            NumberControlGroup(devices: scene.devices ?? [])
+                .tabItem{
+                    Label("Numeric Controls", systemImage: "numbers.rectangle")
+                }
+            OtherControlGroup(devices: scene.devices ?? [])
+                .tabItem{
+                    Label("Numeric Controls", systemImage: "ellipsis")
+                }
         }
         .task(self.getScene)
-        .tabViewStyle(.page)
+        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+        .indexViewStyle(.page(backgroundDisplayMode: .always))
         .navigationTitle(scene.name ?? "")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {

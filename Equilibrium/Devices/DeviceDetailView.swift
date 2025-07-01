@@ -49,6 +49,17 @@ struct DeviceDetailView: View {
     var body: some View {
         TabView {
             CommonControlsView(devices: [device])
+                .tabItem{
+                    Label("Common Controls", systemImage: "command")
+                }
+            NumberControlGroup(devices: [device])
+                .tabItem{
+                    Label("Numeric Controls", systemImage: "numbers.rectangle")
+                }
+            OtherControlGroup(devices: [device])
+                .tabItem{
+                    Label("Numeric Controls", systemImage: "numbers.rectangle")
+                }
         }
         .task(self.getDevice)
         .tabViewStyle(.page)

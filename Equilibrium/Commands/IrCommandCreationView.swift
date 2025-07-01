@@ -30,6 +30,7 @@ struct IrCommandCreationView: View {
             self.currentState = response
         }
         if response == .done {
+            ImpactGenerator.shared.notify(type: .success)
             DispatchQueue.main.asyncAfter(deadline: .now()+1) {
                 self.dismiss()
             }
