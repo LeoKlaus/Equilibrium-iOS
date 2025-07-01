@@ -35,7 +35,8 @@ class MockApiHandler: EquilibriumAPIHandler {
         case .command(_):
             throw URLError(.badURL)
         case .sendCommand(_):
-            throw URLError(.badURL)
+            try await Task.sleep(for: .milliseconds(500))
+            return Data()
         case .devices:
             return try JSONEncoder().encode([Device.mockTV, Device.mockAmplifier, .mockPlayer])
         case .device(_):
@@ -64,6 +65,9 @@ class MockApiHandler: EquilibriumAPIHandler {
             return try JSONEncoder().encode([Macro.mock, .mockStart, .mockStop])
         case .macro(_):
             throw URLError(.badURL)
+        case .sendMacro(_):
+            try await Task.sleep(for: .milliseconds(500))
+            return Data()
         case .scenes:
             return try JSONEncoder().encode([Scene.mock])
         case .scene(_):

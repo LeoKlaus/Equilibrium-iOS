@@ -171,9 +171,6 @@
     "Connected" : {
 
     },
-    "Create Macro" : {
-
-    },
     "Create one now?" : {
 
     },
@@ -284,6 +281,9 @@
 
     },
     "Escape" : {
+
+    },
+    "Execute %@" : {
 
     },
     "Exit" : {
@@ -614,6 +614,9 @@
 
     },
     "Stop %@" : {
+
+    },
+    "Stop Macro" : {
 
     },
     "Stopping %@..." : {

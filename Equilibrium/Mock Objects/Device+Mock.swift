@@ -83,7 +83,9 @@ extension Device {
             .mockOther
         ],
         scenes: [],
-        macros: []
+        macros: [
+            .mock
+        ]
     )
     
     static let mockAmplifier = Device(

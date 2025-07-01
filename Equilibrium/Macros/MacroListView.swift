@@ -74,6 +74,20 @@ struct MacroListView: View {
         }
     }
     
+    func sendMacro(_ macro: Macro) {
+        guard let macroId = macro.id else {
+            self.errorHandler.handle("\(macro.name ?? "Macro") has no id", while: "executing macro")
+            return
+        }
+        Task {
+            do {
+                try await self.connectionHandler.sendMacro(macroId)
+            } catch {
+                self.errorHandler.handle(error, while: "executing macro")
+            }
+        }
+    }
+    
     var body: some View {
         List {
             if isLoading {
@@ -105,6 +119,12 @@ struct MacroListView: View {
                         .foregroundStyle(.primary)
                     } else {
                         Menu {
+                            Button {
+                                self.sendMacro(macro)
+                            } label: {
+                                Label("Execute \(macro.name ?? "")", systemImage: "paperplane")
+                            }
+                            
                             NavigationLink(destination: CreateMacroView(macro: macro)) {
                                 Label("Edit \(macro.name ?? "macro")", systemImage: "pencil")
                             }

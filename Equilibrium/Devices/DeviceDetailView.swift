@@ -46,6 +46,20 @@ struct DeviceDetailView: View {
         }
     }
     
+    func sendMacro(_ macro: Macro) {
+        guard let macroId = macro.id else {
+            self.errorHandler.handle("\(macro.name ?? "Macro") has no id", while: "executing macro")
+            return
+        }
+        Task {
+            do {
+                try await self.connectionHandler.sendMacro(macroId)
+            } catch {
+                self.errorHandler.handle(error, while: "executing macro")
+            }
+        }
+    }
+    
     var body: some View {
         TabView {
             CommonControlsView(devices: [device])
@@ -66,6 +80,21 @@ struct DeviceDetailView: View {
         .navigationTitle(device.name)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
+            
+            if !(self.device.macros?.isEmpty ?? true) {
+                ToolbarItem(placement: .primaryAction) {
+                    Menu {
+                        ForEach(self.device.macros ?? []) { macro in
+                            Button(macro.name ?? "Unnamed Macro") {
+                                self.sendMacro(macro)
+                            }
+                        }
+                    } label: {
+                        Label("Macros", systemImage: "command")
+                    }
+                }
+            }
+            
             ToolbarItem(placement: .primaryAction) {
                 if self.isDevicePowered, let turnOffCommandId = device.commands?.first(where: { $0.button == .powerOff })?.id ?? device.commands?.first(where: { $0.button == .powerToggle })?.id {
                     Button(role: .destructive) {

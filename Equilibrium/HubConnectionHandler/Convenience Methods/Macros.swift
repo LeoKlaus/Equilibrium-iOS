@@ -52,4 +52,12 @@ extension HubConnectionHandler {
         
         return try await apiHandler.delete(endpoint: .macro(id: id))
     }
+    
+    func sendMacro(_ id: Int) async throws {
+        guard let apiHandler else {
+            throw HubConnectionError.noApiHandler
+        }
+        
+        return try await apiHandler.delete(endpoint: .sendMacro(id: id))
+    }
 }
