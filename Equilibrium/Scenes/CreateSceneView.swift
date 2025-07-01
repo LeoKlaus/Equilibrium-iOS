@@ -124,11 +124,33 @@ struct CreateSceneView: View {
             }
             
             Section {
-                MacroPicker(macros: self.macros, selection: $startMacro)
-                    .foregroundStyle(.primary)
+                NavigationLink(destination: MacroListView(selectedMacro: self.$startMacro)) {
+                    HStack {
+                        Text("Start Macro")
+                        Spacer()
+                        if let startMacro {
+                            Text(startMacro.name ?? "Unnamed Macro")
+                                .foregroundStyle(.secondary)
+                        } else {
+                            Text("None")
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                }
                 
-                MacroPicker(macros: self.macros, selection: $stopMacro)
-                    .foregroundStyle(.primary)
+                NavigationLink(destination: MacroListView(selectedMacro: self.$stopMacro)) {
+                    HStack {
+                        Text("Stop Macro")
+                        Spacer()
+                        if let stopMacro {
+                            Text(stopMacro.name ?? "Unnamed Macro")
+                                .foregroundStyle(.secondary)
+                        } else {
+                            Text("None")
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                }
             } header: {
                 Text("Macros")
             } footer: {
@@ -201,57 +223,4 @@ struct CreateSceneView: View {
     }
     .withErrorHandling()
     .environment(MockHubConnectionHandler() as HubConnectionHandler)
-}
-
-
-struct MacroPicker: View {
-    
-    let macros: [Macro]
-    @Binding var selection: Macro?
-    
-    var body: some View {
-        Menu {
-            ForEach(self.macros) { macro in
-                Button {
-                    self.selection = macro
-                } label: {
-                    if self.selection == macro {
-                        Label(macro.name ?? "Macro \(macro.id ?? 0)", systemImage: "checkmark")
-                    } else {
-                        Text(macro.name ?? "Macro \(macro.id ?? 0)")
-                    }
-                }
-            }
-            Divider()
-            Button {
-                self.selection = nil
-            } label: {
-                if self.selection == nil {
-                    Label("None", systemImage: "checkmark")
-                } else {
-                    Text("None")
-                }
-            }
-            Divider()
-            NavigationLink(destination: CreateMacroView()) {
-                Label("Create Macro", systemImage: "plus")
-            }
-        } label: {
-            HStack {
-                Text("Start Macro")
-                Spacer()
-                if let selection {
-                    Text(selection.name ?? "Unnamed Macro")
-                        .foregroundStyle(.secondary)
-                } else {
-                    Text("None")
-                        .foregroundStyle(.secondary)
-                }
-                Image(systemName: "chevron.compact.up.chevron.compact.down")
-                    .resizable()
-                    .frame(width: 8, height: 12)
-                    .foregroundStyle(.secondary)
-            }
-        }
-    }
 }

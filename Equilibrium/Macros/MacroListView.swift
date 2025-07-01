@@ -19,7 +19,7 @@ struct MacroListView: View {
     @State private var macros: [Macro] = []
     @State private var isLoading = true
     
-    @State private var showUploadSheet: Bool = false
+    @State private var showCreationSheet: Bool = false
     
     @State private var showDeleteConfirmation: Bool = false
     @State private var macrosToDelete: IndexSet? = nil
@@ -151,9 +151,8 @@ struct MacroListView: View {
                 self.macrosToDelete = nil
             }
         }
-        .sheet(isPresented: $showUploadSheet) {
-            UploadImageView()
-                .presentationDetents([.medium])
+        .sheet(isPresented: $showCreationSheet) {
+            CreateMacroView()
                 .onDisappear {
                     Task {
                         await getMacros()
@@ -163,7 +162,7 @@ struct MacroListView: View {
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button {
-                    self.showUploadSheet.toggle()
+                    self.showCreationSheet.toggle()
                 } label: {
                     Label("Add Macro", systemImage: "plus")
                 }

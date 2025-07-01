@@ -304,9 +304,6 @@
     "HEAD" : {
 
     },
-    "Hello, World!" : {
-
-    },
     "Home" : {
 
     },
@@ -617,9 +614,6 @@
 
     },
     "Stop %@" : {
-
-    },
-    "Stop Macro" : {
 
     },
     "Stopping %@..." : {
