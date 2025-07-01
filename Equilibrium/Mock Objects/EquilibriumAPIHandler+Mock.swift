@@ -22,7 +22,16 @@ class MockApiHandler: EquilibriumAPIHandler {
     override func get(endpoint: ApiEndpoint) async throws -> Data {
         switch endpoint {
         case .commands:
-            return try JSONEncoder().encode([Command.mockPowerToggle])
+            return try JSONEncoder().encode([
+                Command.mockPowerToggle,
+                .mockUp,
+                .mockDown,
+                .mockLeft,
+                .mockRight,
+                .mockSelect,
+                .mockBack,
+                .mockHDMIOne
+            ])
         case .command(_):
             throw URLError(.badURL)
         case .sendCommand(_):

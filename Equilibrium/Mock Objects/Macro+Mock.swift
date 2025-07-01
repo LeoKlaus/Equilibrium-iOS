@@ -26,9 +26,11 @@ extension Macro {
         id: 2,
         name: "Start Apple TV",
         commands: [
-            .mockPowerToggle
+            .mockPowerToggle,
+            .mockHDMIOne,
+            .mockOther
         ],
-        delays: [],
+        delays: [100, 500],
         scenes: [
         ],
         devices: [
@@ -40,7 +42,7 @@ extension Macro {
         id: 3,
         name: "Stop Apple TV",
         commands: [
-            
+            .mockPowerToggle
         ],
         delays: [],
         scenes: [

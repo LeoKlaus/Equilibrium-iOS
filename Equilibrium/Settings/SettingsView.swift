@@ -34,6 +34,12 @@ struct SettingsView: View {
                     Label("Commands", systemImage: "terminal")
                 }
                 
+                NavigationLink {
+                    MacroListView()
+                } label: {
+                    Label("Macros", systemImage: "command")
+                }
+                
                 Section {
                     Toggle("Invert Images in Dark Mode", isOn: $invertImagesInDarkMode)
                 } footer: {

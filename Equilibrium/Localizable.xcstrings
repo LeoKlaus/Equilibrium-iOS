@@ -20,6 +20,28 @@
         }
       }
     },
+    "%lld commands" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld command"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "new",
+                  "value" : "%lld commands"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "0" : {
 
     },
@@ -69,6 +91,9 @@
 
     },
     "Add Image" : {
+
+    },
+    "Add Macro" : {
 
     },
     "Add Scene" : {
@@ -146,16 +171,28 @@
     "Connected" : {
 
     },
+    "Create Macro" : {
+
+    },
     "Create one now?" : {
 
     },
     "Creating script commands is currently not supported" : {
 
     },
+    "Delay" : {
+
+    },
+    "Delay after (in ms): " : {
+
+    },
     "Delete" : {
 
     },
     "DELETE" : {
+
+    },
+    "Delete %@" : {
 
     },
     "Delete %lld commands?" : {
@@ -182,6 +219,9 @@
           }
         }
       }
+    },
+    "Delete %lld macros?" : {
+
     },
     "Device" : {
 
@@ -231,6 +271,9 @@
     "Down" : {
 
     },
+    "Drag to reorder, swipe left to remove commands." : {
+
+    },
     "Edit %@" : {
 
     },
@@ -258,18 +301,10 @@
     "Guide" : {
 
     },
-    "Haha das ist ein test" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Benis"
-          }
-        }
-      }
-    },
     "HEAD" : {
+
+    },
+    "Hello, World!" : {
 
     },
     "Home" : {
@@ -338,6 +373,9 @@
     "Loading images from hub..." : {
 
     },
+    "Loading macros from hub..." : {
+
+    },
     "Loading scenes..." : {
 
     },
@@ -398,10 +436,16 @@
     "No images found" : {
 
     },
+    "No macros found" : {
+
+    },
     "No scenes found." : {
 
     },
     "None" : {
+
+    },
+    "None (show all)" : {
 
     },
     "Not connected" : {
@@ -509,10 +553,16 @@
     "Save Changes" : {
 
     },
+    "Save Macro" : {
+
+    },
     "Save Scene" : {
 
     },
     "Saving device..." : {
+
+    },
+    "Saving macro..." : {
 
     },
     "Saving scene..." : {
