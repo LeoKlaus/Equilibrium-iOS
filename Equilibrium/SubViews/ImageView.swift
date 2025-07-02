@@ -16,7 +16,7 @@ struct ImageView: View {
     @EnvironmentObject var errorHandler: ErrorHandler
     @Environment(HubConnectionHandler.self) var connectionHandler
     
-    @AppStorage(UserDefaultKey.invertImagesInDarkMode.rawValue, store: UserDefaults(suiteName: "group.me.wehrfritz.Equilibrium")) var invertImagesInDarkMode: Bool = true
+    @AppStorage(UserDefaultKey.invertImagesInDarkMode.rawValue, store: UserDefaults(suiteName: .userDefaultGroup)) var invertImagesInDarkMode: Bool = true
     
     let image: UserImage
     

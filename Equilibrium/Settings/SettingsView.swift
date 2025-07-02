@@ -11,7 +11,7 @@ struct SettingsView: View {
     
     @State private var navigationPath = NavigationPath()
     
-    @AppStorage(UserDefaultKey.invertImagesInDarkMode.rawValue, store: UserDefaults(suiteName: "group.me.wehrfritz.Equilibrium")) var invertImagesInDarkMode: Bool = true
+    @AppStorage(UserDefaultKey.invertImagesInDarkMode.rawValue, store: UserDefaults(suiteName: .userDefaultGroup)) var invertImagesInDarkMode: Bool = true
     
     var body: some View {
         NavigationStack(path: self.$navigationPath) {

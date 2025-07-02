@@ -6,10 +6,23 @@
 //
 
 import AppIntents
+import EquilibriumAPI
 
-/*struct SendCommandIntent: AppIntent {
+struct SendCommandIntent: AppIntent {
+    static let title: LocalizedStringResource = "Send a command to a device."
+    static let description: IntentDescription? = "Sends the given command to the given device via the selected Hub."
     
-}*/
+    @Parameter(title: "Hub")
+    var hub: DiscoveredService
+    
+    //@Parameter(title: "Device")
+    //var device: Device?
+    
+    func perform() async throws -> some IntentResult {
+        
+        return .result()
+    }
+}
 
 /*struct SendCommandToIntent: AppIntent {
     

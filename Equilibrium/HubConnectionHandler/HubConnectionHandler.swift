@@ -29,9 +29,9 @@ class HubConnectionHandler {
     var socketStream: SocketStream?
     
     init() {
-        if let userDefaults = UserDefaults(suiteName: "group.me.wehrfritz.Equilibrium"),
+        if let userDefaults = UserDefaults(suiteName: .userDefaultGroup),
            let currentHubString = userDefaults.string(forKey: UserDefaultKey.currentHub.rawValue),
-           let service = try? JSONDecoder().decode(DiscoveredService.self, from: Data(currentHubString.utf8)),
+           let service = DiscoveredService(rawValue: currentHubString),
            let apiHandler = try? EquilibriumAPIHandler(service: service) {
             self.apiHandler = apiHandler
         }
@@ -39,7 +39,7 @@ class HubConnectionHandler {
     
     func switchToHub(_ service: DiscoveredService) throws {
         self.apiHandler = try EquilibriumAPIHandler(service: service)
-        guard let userDefaults = UserDefaults(suiteName: "group.me.wehrfritz.Equilibrium") else {
+        guard let userDefaults = UserDefaults(suiteName: .userDefaultGroup) else {
             throw HubConnectionError.couldntGetUserdefaults
         }
         let data = try JSONEncoder().encode(service)

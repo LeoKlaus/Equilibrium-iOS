@@ -7,6 +7,9 @@
     "-" : {
 
     },
+    "%@" : {
+
+    },
     "%@ is now ready to use!" : {
 
     },
@@ -319,6 +322,9 @@
     "Host:" : {
 
     },
+    "Hub" : {
+
+    },
     "Icons" : {
 
     },
@@ -601,7 +607,13 @@
     "Select the type that best fits your device. This information will be used to automatically suggest key maps for your remote." : {
 
     },
+    "Send a command to a device." : {
+
+    },
     "Send command" : {
+
+    },
+    "Sends the given command to the given device via the selected Hub." : {
 
     },
     "Setting the correct button allows Equilibrium to automatically suggest key maps for scenes." : {

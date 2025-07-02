@@ -15,9 +15,9 @@ struct ConnectedHubsList: View {
     @Environment(HubConnectionHandler.self) var connectionHandler
     @EnvironmentObject var errorHandler: ErrorHandler
     
-    @AppStorage(UserDefaultKey.connectedHubs.rawValue, store: UserDefaults(suiteName: "group.me.wehrfritz.Equilibrium")) var connectedHubs: [DiscoveredService] = []
+    @AppStorage(UserDefaultKey.connectedHubs.rawValue, store: UserDefaults(suiteName: .userDefaultGroup)) var connectedHubs: [DiscoveredService] = []
     
-    @AppStorage(UserDefaultKey.currentHub.rawValue, store: UserDefaults(suiteName: "group.me.wehrfritz.Equilibrium")) var currentHub: DiscoveredService? = nil
+    @AppStorage(UserDefaultKey.currentHub.rawValue, store: UserDefaults(suiteName: .userDefaultGroup)) var currentHub: DiscoveredService? = nil
     
     var body: some View {
         List {

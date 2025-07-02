@@ -10,3 +10,7 @@ enum UserDefaultKey: String {
     case connectedHubs
     case invertImagesInDarkMode
 }
+
+extension String {
+    static let userDefaultGroup = "group.me.wehrfritz.Equilibrium"
+}
