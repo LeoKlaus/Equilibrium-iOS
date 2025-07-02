@@ -58,6 +58,6 @@ extension HubConnectionHandler {
             throw HubConnectionError.noApiHandler
         }
         
-        return try await apiHandler.delete(endpoint: .sendMacro(id: id))
+        return try await apiHandler.post(endpoint: .sendMacro(id: id))
     }
 }

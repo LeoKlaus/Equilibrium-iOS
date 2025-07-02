@@ -43,8 +43,10 @@ struct MacroListView: View {
             self.macros = try await connectionHandler.getMacros()
             self.isLoading = false
         } catch {
-            self.errorHandler.handle(error, while: "fetching macros")
-            self.isLoading = false
+            if !Task.isCancelled {
+                self.errorHandler.handle(error, while: "fetching macros")
+                self.isLoading = false
+            }
         }
     }
     
@@ -172,12 +174,14 @@ struct MacroListView: View {
             }
         }
         .sheet(isPresented: $showCreationSheet) {
-            CreateMacroView()
-                .onDisappear {
-                    Task {
-                        await getMacros()
+            NavigationStack {
+                CreateMacroView()
+                    .onDisappear {
+                        Task {
+                            await getMacros()
+                        }
                     }
-                }
+            }
         }
         .toolbar {
             ToolbarItem(placement: .primaryAction) {

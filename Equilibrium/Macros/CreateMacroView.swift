@@ -23,8 +23,6 @@ struct CreateMacroView: View {
     @State private var commands: [Command] = []
     @State private var delays: [Int] = []
     
-    @State private var availableCommands: [Command] = []
-    
     @State private var isSaving: Bool = false
     
     init() {
@@ -33,20 +31,22 @@ struct CreateMacroView: View {
     }
     
     init(macro: Macro) {
-        self.isEditView = false
+        self.isEditView = true
         self.id = macro.id
         self._name = State(initialValue: macro.name ?? "")
-        self._commands = State(initialValue: macro.commands ?? [])
+        
+        self._commands = State(
+            initialValue:
+                macro.command_ids?.compactMap { commandId in
+                    macro.commands?.first(
+                        where: {
+                            $0.id == commandId
+                        })
+                } ?? []
+        )
+        
+        //self._commands = State(initialValue: macro.commands ?? [])
         self._delays = State(initialValue: macro.delays)
-    }
-    
-    @Sendable
-    func getCommands() async {
-        do {
-            self.availableCommands = try await self.connectionHandler.getCommands()
-        } catch {
-            self.errorHandler.handle(error, while: "getting commands from hub")
-        }
     }
     
     func saveMacro() {
@@ -58,7 +58,8 @@ struct CreateMacroView: View {
             return
         }
         
-        let macro = Macro(id: self.id, name: self.name, commands: self.commands, delays: self.delays)
+        let macro = Macro(id: self.id, name: self.name, command_ids: self.commands.compactMap(\.id), delays: self.delays)
+        
         Task {
             do {
                 if self.isEditView {
@@ -66,6 +67,7 @@ struct CreateMacroView: View {
                 } else {
                     _ = try await self.connectionHandler.createMacro(macro)
                 }
+                self.dismiss()
             } catch {
                 self.errorHandler.handle(error, while: "saving macro")
             }
@@ -76,6 +78,7 @@ struct CreateMacroView: View {
     var body: some View {
         List {
             TextField("Name", text: self.$name)
+                .textInputAutocapitalization(.words)
             
             Section {
                 ForEach(Array(self.commands.enumerated()), id: \.offset) { index, command in
@@ -85,6 +88,7 @@ struct CreateMacroView: View {
                             HStack {
                                 Text("Delay after (in ms): ")
                                 TextField("Delay", value: $delays[index], formatter: NumberFormatter())
+                                    .keyboardType(.numberPad)
                             }
                             .foregroundStyle(.secondary)
                             .font(.footnote)
@@ -145,7 +149,6 @@ struct CreateMacroView: View {
             }
             .disabled(isSaving)
         }
-        .task(self.getCommands)
     }
 }
 
@@ -159,7 +162,7 @@ struct CreateMacroView: View {
 
 #Preview("Edit") {
     NavigationStack {
-        CreateMacroView(macro: .mockStart)
+        CreateMacroView(macro: .mockWithDoubleClick)
     }
     .withErrorHandling()
     .environment(MockHubConnectionHandler() as HubConnectionHandler)

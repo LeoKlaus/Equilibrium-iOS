@@ -16,7 +16,7 @@ struct MacroListItem: View {
         VStack(alignment: .leading) {
             Text(self.macro.name ?? "")
                 .bold()
-            Text("\(macro.commands?.count ?? 0) commands")
+            Text("\(macro.command_ids?.count ?? 0) commands")
                 .foregroundStyle(.secondary)
                 .font(.footnote)
         }

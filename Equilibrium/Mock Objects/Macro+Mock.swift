@@ -51,4 +51,25 @@ extension Macro {
             .mockTV
         ]
     )
+    
+    static let mockWithDoubleClick = Macro(
+        id: 4,
+        name: "Close App",
+        commands: [
+            .mockMenu,
+            .mockUp
+        ],
+        command_ids: [
+            8,
+            8,
+            2,
+            2
+        ],
+        delays: [50,250,50],
+        scenes: [
+        ],
+        devices: [
+            .mockPlayer
+        ]
+    )
 }
