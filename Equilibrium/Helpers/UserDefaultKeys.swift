@@ -6,6 +6,7 @@
 //
 
 enum UserDefaultKey: String {
+    case currentHub
     case connectedHubs
     case invertImagesInDarkMode
 }

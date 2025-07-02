@@ -11,6 +11,8 @@ import EquilibriumAPI
 
 struct DiscoverHubsView: View {
     
+    @Environment(\.dismiss) var dismiss
+    
     @EnvironmentObject var errorHandler: ErrorHandler
     @Environment(HubConnectionHandler.self) var connectionHandler
     
@@ -38,6 +40,7 @@ struct DiscoverHubsView: View {
                     self.connectedHubs.append(newHub)
                 }
                 try connectionHandler.switchToHub(newHub)
+                self.dismiss()
             } catch {
                 DispatchQueue.main.async {
                     self.isTestingConnection = false

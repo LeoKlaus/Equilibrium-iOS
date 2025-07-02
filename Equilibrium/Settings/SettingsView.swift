@@ -16,6 +16,12 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack(path: self.$navigationPath) {
             List {
+                Section {
+                    NavigationLink(destination: ConnectedHubsList()) {
+                        Label("Connected Hubs", systemImage: "server.rack")
+                    }
+                }
+                    
                 NavigationLink {
                     ImageListView()
                 } label: {

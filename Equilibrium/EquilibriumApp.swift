@@ -12,8 +12,6 @@ import EquilibriumAPI
 @main
 struct EquilibriumApp: App {
     
-    
-    
     @AppStorage(UserDefaultKey.connectedHubs.rawValue, store: UserDefaults(suiteName: "group.me.wehrfritz.Equilibrium")) var connectedHubs: [DiscoveredService] = []
     
     let connectionHandler = HubConnectionHandler()

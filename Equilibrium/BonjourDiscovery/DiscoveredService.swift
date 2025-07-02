@@ -7,9 +7,9 @@
 
 //import Network
 
-struct DiscoveredService: Identifiable, Codable {
+struct DiscoveredService: Identifiable, Codable, Equatable {
     var id: String {
-        self.name
+        self.name + self.host + String(self.port)
     }
     
     let name: String

@@ -90,6 +90,9 @@
     "Add Device" : {
 
     },
+    "Add Hub" : {
+
+    },
     "Add Image" : {
 
     },
@@ -169,6 +172,9 @@
 
     },
     "Connected" : {
+
+    },
+    "Connected Hubs" : {
 
     },
     "Create one now?" : {
@@ -430,6 +436,9 @@
     "No devices found." : {
 
     },
+    "No hubs connected." : {
+
+    },
     "No images found" : {
 
     },
@@ -629,6 +638,9 @@
 
     },
     "Stopping %@..." : {
+
+    },
+    "Switch to %@" : {
 
     },
     "Test" : {

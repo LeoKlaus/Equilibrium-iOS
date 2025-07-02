@@ -30,8 +30,8 @@ class HubConnectionHandler {
     
     init() {
         if let userDefaults = UserDefaults(suiteName: "group.me.wehrfritz.Equilibrium"),
-           let currentHubData = userDefaults.data(forKey: "currentHub"),
-           let service = try? JSONDecoder().decode(DiscoveredService.self, from: currentHubData),
+           let currentHubString = userDefaults.string(forKey: UserDefaultKey.currentHub.rawValue),
+           let service = try? JSONDecoder().decode(DiscoveredService.self, from: Data(currentHubString.utf8)),
            let apiHandler = try? EquilibriumAPIHandler(service: service) {
             self.apiHandler = apiHandler
         }
@@ -42,6 +42,7 @@ class HubConnectionHandler {
         guard let userDefaults = UserDefaults(suiteName: "group.me.wehrfritz.Equilibrium") else {
             throw HubConnectionError.couldntGetUserdefaults
         }
-        userDefaults.set(try JSONEncoder().encode(service), forKey: "currentHub")
+        let data = try JSONEncoder().encode(service)
+        userDefaults.set(String(data: data, encoding: .utf8), forKey: UserDefaultKey.currentHub.rawValue)
     }
 }
