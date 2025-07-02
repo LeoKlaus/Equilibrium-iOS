@@ -51,7 +51,6 @@ struct ContentView: View {
                 .tabViewBottomAccessory {
                     CurrentSceneQuickSettings()
                 }
-                .tabBarMinimizeBehavior(.onScrollDown)
             } else {
                 TabView {
                     ScenesView()
@@ -68,6 +67,9 @@ struct ContentView: View {
                         .tabItem {
                             Label("Settings", systemImage: "gear")
                         }
+                }
+                .overlay(alignment: .bottom) {
+                    CurrentSceneQuickSettings()
                 }
             }
         }

@@ -35,6 +35,8 @@ struct CreateSceneView: View {
     
     @State private var devices: [Device] = []
     
+    @State private var assignedMacros: [Macro] = []
+    
     //@State private var keymap: String? = nil
     
     init(scene: EquilibriumAPI.Scene) {
@@ -48,6 +50,8 @@ struct CreateSceneView: View {
         self._stopMacro = State(initialValue: scene.stopMacro)
         
         self._devices = State(initialValue: scene.devices ?? [])
+        
+        self._assignedMacros = State(initialValue: scene.macros ?? [])
         
         //self._keymap = State(initialValue: scene.keymap)
     }
@@ -69,8 +73,8 @@ struct CreateSceneView: View {
     func saveScene() {
         self.isSaving = true
         
-        //let scene = EquilibriumAPI.Scene(id: self.id, name: self.name, imageId: self.image?.id, bluetoothAddress: self.bleDevice?.address ?? self.bluetoothAddress, keymap: self.keymap, deviceIds: self.devices.compactMap(\.id), startMacroId: self.startMacro?.id, stopMacroId: self.stopMacro?.id)
-        let scene = EquilibriumAPI.Scene(id: self.id, name: self.name, imageId: self.image?.id, bluetoothAddress: self.bleDevice?.address ?? self.bluetoothAddress, deviceIds: self.devices.compactMap(\.id), startMacroId: self.startMacro?.id, stopMacroId: self.stopMacro?.id)
+        //let scene = EquilibriumAPI.Scene(id: self.id, name: self.name, imageId: self.image?.id, bluetoothAddress: self.bleDevice?.address ?? self.bluetoothAddress, keymap: self.keymap, deviceIds: self.devices.compactMap(\.id), startMacroId: self.startMacro?.id, stopMacroId: self.stopMacro?.id, macro_ids: self.assignedMacros.compactMap(\.id))
+        let scene = EquilibriumAPI.Scene(id: self.id, name: self.name, imageId: self.image?.id, bluetoothAddress: self.bleDevice?.address ?? self.bluetoothAddress, deviceIds: self.devices.compactMap(\.id), startMacroId: self.startMacro?.id, stopMacroId: self.stopMacro?.id, macroIds: self.assignedMacros.compactMap(\.id))
         
         
         Task {
@@ -152,7 +156,7 @@ struct CreateSceneView: View {
                     }
                 }
             } header: {
-                Text("Macros")
+                Text("Start/Stop Macros")
             } footer: {
                 Text("These macros will run every time the scene is started or stopped. You should use these to turn on and off devices and change inputs as needed.")
             }
@@ -178,6 +182,29 @@ struct CreateSceneView: View {
                 Text("Devices")
             } footer: {
                 Text("All devices included in either start or stop macro and the associated bluetooth device (if applicable) will be added automatically. You can still manually add devices to this scene.")
+            }
+            
+            Section {
+                NavigationLink(destination: MacrosPicker(selectedMacros: self.$assignedMacros)) {
+                    HStack {
+                        Text("Macros")
+                        Spacer()
+                        if self.assignedMacros.isEmpty {
+                            Text("None")
+                                .foregroundStyle(.secondary)
+                        } else if self.assignedMacros.count == 1, let macroName = self.assignedMacros.first?.name {
+                            Text(macroName)
+                                .foregroundStyle(.secondary)
+                        } else {
+                            Text(String(self.assignedMacros.count))
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                }
+            } header: {
+                Text("Other Macros")
+            } footer: {
+                Text("These macros will be available as shortcuts for this scene.")
             }
             
             /*Section {

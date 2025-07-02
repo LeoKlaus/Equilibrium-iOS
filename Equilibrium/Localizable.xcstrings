@@ -436,6 +436,9 @@
     "No macros found" : {
 
     },
+    "No macros found." : {
+
+    },
     "No scenes found." : {
 
     },
@@ -458,6 +461,9 @@
 
     },
     "Other" : {
+
+    },
+    "Other Macros" : {
 
     },
     "Pair devices" : {
@@ -607,6 +613,9 @@
     "Start Recording %@" : {
 
     },
+    "Start/Stop Macros" : {
+
+    },
     "Starting %@..." : {
 
     },
@@ -626,6 +635,9 @@
 
     },
     "Test %@" : {
+
+    },
+    "These macros will be available as shortcuts for this scene." : {
 
     },
     "These macros will run every time the scene is started or stopped. You should use these to turn on and off devices and change inputs as needed." : {
