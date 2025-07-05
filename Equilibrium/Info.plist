@@ -2,11 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>NSBonjourServices</key>
-    <array>
-        <string>_equilibrium._tcp</string>
-    </array>
-    <key>NSLocalNetworkUsageDescription</key>
-    <string>Equilibrium needs to have network access to search for and connect to your hub.</string>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_equilibrium._tcp</string>
+	</array>
 </dict>
 </plist>

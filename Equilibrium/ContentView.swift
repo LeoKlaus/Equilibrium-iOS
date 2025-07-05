@@ -70,6 +70,14 @@ struct ContentView: View {
                 }
                 .overlay(alignment: .bottom) {
                     CurrentSceneQuickSettings()
+                        .padding(.vertical)
+                        .background (.thinMaterial)
+                        .cornerRadius(10)
+                        .padding()
+                        .frame(height: 45)
+                        .offset(y: -60)
+                        .shadow(radius: 10)
+                        .transition(.move(edge: .bottom))
                 }
             }
         }

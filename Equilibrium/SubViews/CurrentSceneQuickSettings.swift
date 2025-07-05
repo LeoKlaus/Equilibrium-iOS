@@ -33,13 +33,17 @@ struct CurrentSceneQuickSettings: View {
             switch connectionHandler.currentSceneStatus?.scene_status {
             case .starting:
                 HStack {
+                    Spacer()
                     ProgressView()
                     Text("Starting \(scene.name ?? "scene")...")
+                    Spacer()
                 }
             case .stopping:
                 HStack {
+                    Spacer()
                     ProgressView()
                     Text("Stopping \(scene.name ?? "scene")...")
+                    Spacer()
                 }
             default:
                 HStack {
@@ -60,7 +64,7 @@ struct CurrentSceneQuickSettings: View {
                     self.showSceneSheet.toggle()
                 }
                 .sheet(isPresented: $showSceneSheet) {
-                    Text("Test")
+                    SceneDetailView(scene: scene)
                 }
             }
         }
