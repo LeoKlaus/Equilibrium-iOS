@@ -97,6 +97,7 @@ struct DiscoverHubsView: View {
                             .padding(.leading, 5)
                         TextField("192.168.0.123", text: $host)
                             .textFieldStyle(.roundedBorder)
+                            .textInputAutocapitalization(.never)
                     }
                     VStack(alignment: .leading, spacing: 0) {
                         Text("Port:")
