@@ -589,6 +589,9 @@
     "Saving scene..." : {
 
     },
+    "Scene" : {
+
+    },
     "Scenes" : {
 
     },
@@ -643,10 +646,16 @@
     "Start Recording %@" : {
 
     },
+    "Start the selected scene via the selected hub." : {
+
+    },
     "Start/Stop Macros" : {
 
     },
     "Starting %@..." : {
+
+    },
+    "Starts the given scene via the given hub." : {
 
     },
     "Stop" : {
@@ -658,7 +667,13 @@
     "Stop Macro" : {
 
     },
+    "Stop the current scene on the selected hub." : {
+
+    },
     "Stopping %@..." : {
+
+    },
+    "Stops the current scene on the given hub." : {
 
     },
     "Switch to %@" : {

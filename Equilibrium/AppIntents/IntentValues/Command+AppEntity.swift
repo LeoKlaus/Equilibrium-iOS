@@ -36,11 +36,6 @@ extension Command: @retroactive AppEntity {
         )
         var sendCommandIntent
         
-        /*@IntentParameterDependency<SendCommandIntent>(
-            \SendCommandIntent.$device
-        )
-        var sendCommandIntentDevice*/
-        
         private var selectedDevice: Device? {
             self.sendCommandToDeviceIntent?.device
         }
