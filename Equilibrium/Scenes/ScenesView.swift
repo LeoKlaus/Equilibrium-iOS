@@ -80,7 +80,7 @@ struct ScenesView: View {
                         SceneListItem(scene: scene)
                     }
                     .contextMenu {
-                        if connectionHandler.currentSceneStatus?.current_scene == scene {
+                        if connectionHandler.currentSceneStatus?.currentScene == scene {
                             Button(role: .destructive, action: self.stopScene) {
                                 Label("Stop \(scene.name ?? "Scene")", systemImage: "poweroff")
                             }

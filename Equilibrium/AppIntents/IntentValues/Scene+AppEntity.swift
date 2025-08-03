@@ -26,8 +26,13 @@ extension Scene: @retroactive AppEntity {
         )
         var startSceneIntent
         
+        @IntentParameterDependency<SelectScenesIntent>(
+            \.$hub
+        )
+        var selectScenesIntent
+        
         private func getApiHandler() throws -> EquilibriumAPIHandler {
-            guard let hub = self.startSceneIntent?.hub else {
+            guard let hub = self.startSceneIntent?.hub ?? selectScenesIntent?.hub else {
                 throw EntityError.noHubSelected
             }
             
@@ -37,7 +42,7 @@ extension Scene: @retroactive AppEntity {
         public init () { }
         
         public nonisolated func defaultResult() async throws -> Scene? {
-            let apiHandler = try await self.getApiHandler()
+            let apiHandler = try self.getApiHandler()
             
             let scenes: [Scene] = try await apiHandler.get(endpoint: .scenes)
             
@@ -46,7 +51,7 @@ extension Scene: @retroactive AppEntity {
         
         // Provide the list of options you want to show the user, when they select the Entity in the shortcut. You probably want to show all items you have from your array.
         public nonisolated func suggestedEntities() async throws -> [Scene] {
-            let apiHandler = try await self.getApiHandler()
+            let apiHandler = try self.getApiHandler()
             
             let scenes: [Scene] = try await apiHandler.get(endpoint: .scenes)
             
@@ -55,7 +60,7 @@ extension Scene: @retroactive AppEntity {
         
         // Find Entity by id to bridge the Shortcuts Entity to your App
         public nonisolated func entities(for identifiers: [Int?]) async throws -> [Scene] {
-            let apiHandler = try await self.getApiHandler()
+            let apiHandler = try self.getApiHandler()
             
             let scenes: [Scene] = try await apiHandler.get(endpoint: .scenes)
             
@@ -63,3 +68,4 @@ extension Scene: @retroactive AppEntity {
         }
     }
 }
+

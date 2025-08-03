@@ -11,6 +11,7 @@ import SwiftUI
 @main
 struct Equilibrium_WidgetsBundle: WidgetBundle {
     var body: some Widget {
+        SceneControlWidget()
         Equilibrium_Widgets()
         if #available(iOS 18.0, *) {
             Equilibrium_WidgetsControl()

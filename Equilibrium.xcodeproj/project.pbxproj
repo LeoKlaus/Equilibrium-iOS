@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A0656592E3FA2CE006B2B74 /* EquilibriumAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 4A0656582E3FA2CE006B2B74 /* EquilibriumAPI */; };
 		4AB4321C2E0441190081E4B0 /* EasyErrorHandling in Frameworks */ = {isa = PBXBuildFile; productRef = 4AB4321B2E0441190081E4B0 /* EasyErrorHandling */; };
 		4ABCD81C2E09B95100B936F1 /* EquilibriumAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 4ABCD81B2E09B95100B936F1 /* EquilibriumAPI */; };
 		4AD60E632E11B05A00B312D9 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD60E622E11B05A00B312D9 /* WidgetKit.framework */; };
@@ -39,6 +40,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4A5947782E3FD182009ED66F /* Equilibrium-WidgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Equilibrium-WidgetsExtension.entitlements"; sourceTree = "<group>"; };
 		4AB4320C2E043DFB0081E4B0 /* Equilibrium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Equilibrium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AD60E602E11B05A00B312D9 /* Equilibrium-WidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Equilibrium-WidgetsExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AD60E622E11B05A00B312D9 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -47,6 +49,42 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		4A06565F2E3FA48B006B2B74 /* Exceptions for "Equilibrium" folder in "Equilibrium-WidgetsExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"AppIntents/IntentValues/Command+AppEntity.swift",
+				"AppIntents/IntentValues/Device+AppEntity.swift",
+				"AppIntents/IntentValues/DiscoveredService+AppEntity.swift",
+				AppIntents/IntentValues/EntityError.swift,
+				"AppIntents/IntentValues/Scene+AppEntity.swift",
+				AppIntents/ReloadAllWidgetsIntent.swift,
+				AppIntents/SendCommandIntent.swift,
+				AppIntents/SendCommandToDeviceIntent.swift,
+				AppIntents/StartSceneIntent.swift,
+				AppIntents/StopSceneIntent.swift,
+				BonjourDiscovery/DiscoveredService.swift,
+				"Extensions/Array+RawRepresentable.swift",
+				"Extensions/EquilibriumAPIHandler+Init.swift",
+				"Extensions/Int?+EntityIdentifierConvertible.swift",
+				"Extensions/RemoteButton+Categories.swift",
+				"Extensions/String+SpacedStrings.swift",
+				Helpers/UserDefaultKeys.swift,
+				"Mock Objects/Command+Mock.swift",
+				"Mock Objects/Device+Mock.swift",
+				"Mock Objects/DiscoveredService+Mock.swift",
+				"Mock Objects/Macro+Mock.swift",
+				"Mock Objects/Scene+Mock.swift",
+				"Mock Objects/UserImage+Mock.swift",
+			);
+			target = 4AD60E5F2E11B05A00B312D9 /* Equilibrium-WidgetsExtension */;
+		};
+		4A5947622E3FA727009ED66F /* Exceptions for "Equilibrium-Widgets" folder in "Equilibrium" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				SceneControlWidget/SelectScenesIntent.swift,
+			);
+			target = 4AB4320B2E043DFB0081E4B0 /* Equilibrium */;
+		};
 		4AB435B32E097C0D0081E4B0 /* Exceptions for "Equilibrium" folder in "Equilibrium" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -68,6 +106,7 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				4AB435B32E097C0D0081E4B0 /* Exceptions for "Equilibrium" folder in "Equilibrium" target */,
+				4A06565F2E3FA48B006B2B74 /* Exceptions for "Equilibrium" folder in "Equilibrium-WidgetsExtension" target */,
 			);
 			path = Equilibrium;
 			sourceTree = "<group>";
@@ -75,6 +114,7 @@
 		4AD60E662E11B05A00B312D9 /* Equilibrium-Widgets */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
+				4A5947622E3FA727009ED66F /* Exceptions for "Equilibrium-Widgets" folder in "Equilibrium" target */,
 				4AD60E7A2E11B05B00B312D9 /* Exceptions for "Equilibrium-Widgets" folder in "Equilibrium-WidgetsExtension" target */,
 			);
 			path = "Equilibrium-Widgets";
@@ -97,6 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AD60E652E11B05A00B312D9 /* SwiftUI.framework in Frameworks */,
+				4A0656592E3FA2CE006B2B74 /* EquilibriumAPI in Frameworks */,
 				4AD60E632E11B05A00B312D9 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -107,6 +148,7 @@
 		4AB432032E043DFA0081E4B0 = {
 			isa = PBXGroup;
 			children = (
+				4A5947782E3FD182009ED66F /* Equilibrium-WidgetsExtension.entitlements */,
 				4AD60E7C2E11B0E600B312D9 /* Equilibrium-WidgetsExtensionRelease.entitlements */,
 				4AB4320E2E043DFB0081E4B0 /* Equilibrium */,
 				4AD60E662E11B05A00B312D9 /* Equilibrium-Widgets */,
@@ -179,6 +221,7 @@
 			);
 			name = "Equilibrium-WidgetsExtension";
 			packageProductDependencies = (
+				4A0656582E3FA2CE006B2B74 /* EquilibriumAPI */,
 			);
 			productName = "Equilibrium-WidgetsExtension";
 			productReference = 4AD60E602E11B05A00B312D9 /* Equilibrium-WidgetsExtension.appex */;
@@ -395,11 +438,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = Equilibrium/Equilibrium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 28KGVFV686;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -445,11 +490,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = Equilibrium/Equilibrium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 28KGVFV686;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -494,9 +541,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "Equilibrium-WidgetsExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 28KGVFV686;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Equilibrium-Widgets/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Equilibrium-Widgets";
@@ -510,9 +561,14 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.wehrfritz.Equilibrium-App.Equilibrium-Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
@@ -529,6 +585,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 28KGVFV686;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Equilibrium-Widgets/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Equilibrium-Widgets";
@@ -542,9 +601,14 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.wehrfritz.Equilibrium-App.Equilibrium-Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
@@ -597,6 +661,11 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4A0656582E3FA2CE006B2B74 /* EquilibriumAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A7CD61B2E3F7A8C00881711 /* XCLocalSwiftPackageReference "../EquilibriumAPI" */;
+			productName = EquilibriumAPI;
+		};
 		4AB4321B2E0441190081E4B0 /* EasyErrorHandling */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = EasyErrorHandling;

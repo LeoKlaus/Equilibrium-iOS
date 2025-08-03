@@ -22,4 +22,10 @@ struct StopSceneIntent: AppIntent {
         
         return .result()
     }
+    
+    init() { }
+    
+    init(hub: DiscoveredService) {
+        self.hub = hub
+    }
 }

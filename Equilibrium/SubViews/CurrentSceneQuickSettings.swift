@@ -29,8 +29,8 @@ struct CurrentSceneQuickSettings: View {
     }
     
     var body: some View {
-        if let scene = connectionHandler.currentSceneStatus?.current_scene {
-            switch connectionHandler.currentSceneStatus?.scene_status {
+        if let scene = connectionHandler.currentSceneStatus?.currentScene {
+            switch connectionHandler.currentSceneStatus?.sceneStatus {
             case .starting:
                 HStack {
                     Spacer()

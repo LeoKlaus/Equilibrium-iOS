@@ -37,7 +37,7 @@ extension Device: @retroactive AppEntity {
         public init () { }
         
         public nonisolated func defaultResult() async throws -> Device? {
-            let apiHandler = try await self.getApiHandler()
+            let apiHandler = try self.getApiHandler()
             
             let devices: [Device] = try await apiHandler.get(endpoint: .devices)
             
@@ -46,7 +46,7 @@ extension Device: @retroactive AppEntity {
         
         // Provide the list of options you want to show the user, when they select the Entity in the shortcut. You probably want to show all items you have from your array.
         public nonisolated func suggestedEntities() async throws -> [Device] {
-            let apiHandler = try await self.getApiHandler()
+            let apiHandler = try self.getApiHandler()
             
             let devices: [Device] = try await apiHandler.get(endpoint: .devices)
             
@@ -55,7 +55,7 @@ extension Device: @retroactive AppEntity {
         
         // Find Entity by id to bridge the Shortcuts Entity to your App
         public nonisolated func entities(for identifiers: [Int?]) async throws -> [Device] {
-            let apiHandler = try await self.getApiHandler()
+            let apiHandler = try self.getApiHandler()
             
             let devices: [Device] = try await apiHandler.get(endpoint: .devices)
             

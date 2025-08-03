@@ -12,5 +12,5 @@ enum UserDefaultKey: String {
 }
 
 extension String {
-    static let userDefaultGroup = "group.me.wehrfritz.Equilibrium"
+    static let userDefaultGroup = "group.me.wehrfritz.equilibrium"
 }

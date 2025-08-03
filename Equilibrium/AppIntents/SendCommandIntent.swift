@@ -29,4 +29,11 @@ struct SendCommandIntent: AppIntent {
         
         return .result()
     }
+    
+    init() { }
+    
+    init(hub: DiscoveredService, command: Command) {
+        self.hub = hub
+        self.command = command
+    }
 }

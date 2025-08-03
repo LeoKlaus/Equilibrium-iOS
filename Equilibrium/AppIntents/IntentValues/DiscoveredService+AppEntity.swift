@@ -24,13 +24,13 @@ extension DiscoveredService: AppEntity {
         nonisolated init () { }
         
         nonisolated func defaultResult() async -> DiscoveredService? {
-            guard let userDefaults = await UserDefaults(suiteName: .userDefaultGroup) else {
+            guard let userDefaults = UserDefaults(suiteName: .userDefaultGroup) else {
                 return nil
             }
             
             if let activeHubStr = userDefaults.string(forKey: UserDefaultKey.currentHub.rawValue), let activeHub = DiscoveredService(rawValue: activeHubStr) {
                 return activeHub
-            } else if let connectedHubsStr = userDefaults.string(forKey: UserDefaultKey.connectedHubs.rawValue), let connectedHubs: [DiscoveredService] = await Array(rawValue: connectedHubsStr) {
+            } else if let connectedHubsStr = userDefaults.string(forKey: UserDefaultKey.connectedHubs.rawValue), let connectedHubs: [DiscoveredService] = Array(rawValue: connectedHubsStr) {
                 return connectedHubs.first
             }
             
@@ -39,23 +39,25 @@ extension DiscoveredService: AppEntity {
         
         // Provide the list of options you want to show the user, when they select the Entity in the shortcut. You probably want to show all items you have from your array.
         nonisolated func suggestedEntities() async throws -> [DiscoveredService] {
-            guard let userDefaults = await UserDefaults(suiteName: .userDefaultGroup) else {
+            guard let userDefaults = UserDefaults(suiteName: .userDefaultGroup) else {
                 return []
             }
-            if let connectedHubsStr = userDefaults.string(forKey: UserDefaultKey.connectedHubs.rawValue), let connectedHubs: [DiscoveredService] = await Array(rawValue: connectedHubsStr) {
+            if let connectedHubsStr = userDefaults.string(forKey: UserDefaultKey.connectedHubs.rawValue), let connectedHubs: [DiscoveredService] = Array(rawValue: connectedHubsStr) {
                 return connectedHubs
             }
+            
             return []
         }
         
         // Find Entity by id to bridge the Shortcuts Entity to your App
         nonisolated func entities(for identifiers: [String]) async throws -> [DiscoveredService] {
-            guard let userDefaults = await UserDefaults(suiteName: .userDefaultGroup) else {
+            guard let userDefaults = UserDefaults(suiteName: .userDefaultGroup) else {
                 return []
             }
-            if let connectedHubsStr = userDefaults.string(forKey: UserDefaultKey.connectedHubs.rawValue), let connectedHubs: [DiscoveredService] = await Array(rawValue: connectedHubsStr) {
+            if let connectedHubsStr = userDefaults.string(forKey: UserDefaultKey.connectedHubs.rawValue), let connectedHubs: [DiscoveredService] = Array(rawValue: connectedHubsStr) {
                 return connectedHubs.filter{ identifiers.contains($0.id) }
             }
+            
             return []
         }
     }

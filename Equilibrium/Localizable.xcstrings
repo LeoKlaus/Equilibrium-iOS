@@ -331,6 +331,9 @@
     "Icons" : {
 
     },
+    "If a scene is active, this widget will show common controls for that scene (like volume or channel controls)." : {
+
+    },
     "If this device can be controlled with a bluetooth keyboard (like an Apple TV), Equilibrium can connect to it that way." : {
 
     },
@@ -556,6 +559,12 @@
     "Regular Key" : {
 
     },
+    "Reload all widgets" : {
+
+    },
+    "Reloads all widgets." : {
+
+    },
     "Retried to many times, cancelling..." : {
 
     },
@@ -610,6 +619,12 @@
     "Select image to upload" : {
 
     },
+    "Select scenes" : {
+
+    },
+    "Select the scenes to display." : {
+
+    },
     "Select the type that best fits your device. This information will be used to automatically suggest key maps for your remote." : {
 
     },
@@ -632,6 +647,9 @@
 
     },
     "Settings" : {
+
+    },
+    "Show controls for current scene" : {
 
     },
     "Sleep" : {
@@ -752,6 +770,9 @@
 
     },
     "Warning: The Bluetooth integration in Equilibrium is in the earlier stages of development. While connecting to paired devices and controlling them (usually) works reliably, pairing can take a few attempts to work." : {
+
+    },
+    "Which scene to show" : {
 
     },
     "Yellow" : {

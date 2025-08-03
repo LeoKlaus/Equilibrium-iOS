@@ -43,8 +43,8 @@ struct SceneListItem: View {
     var body: some View {
         HStack {
             VStack {
-                if let status = self.connectionHandler.currentSceneStatus, status.current_scene == self.scene {
-                        switch status.scene_status {
+                if let status = self.connectionHandler.currentSceneStatus, status.currentScene == self.scene {
+                        switch status.sceneStatus {
                         case .active:
                             Button(action: self.stopScene) {
                                 Image(systemName: "stop.fill")

@@ -105,9 +105,9 @@ struct SceneDetailView: View {
             }
             
             ToolbarItem(placement: .primaryAction) {
-                if connectionHandler.currentSceneStatus?.scene_status == .starting || connectionHandler.currentSceneStatus?.scene_status == .stopping {
+                if connectionHandler.currentSceneStatus?.sceneStatus == .starting || connectionHandler.currentSceneStatus?.sceneStatus == .stopping {
                     ProgressView()
-                } else if connectionHandler.currentSceneStatus?.current_scene == scene {
+                } else if connectionHandler.currentSceneStatus?.currentScene == scene {
                     Button(role: .destructive, action: self.stopScene) {
                         Image(systemName: "power.circle.fill")
                             .foregroundStyle(.red)

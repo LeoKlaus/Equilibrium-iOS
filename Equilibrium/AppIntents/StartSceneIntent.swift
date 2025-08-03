@@ -16,7 +16,7 @@ struct StartSceneIntent: AppIntent {
     var hub: DiscoveredService
     
     @Parameter(title: "Scene")
-    var scene: Scene
+    var scene: EquilibriumAPI.Scene
     
     func perform() async throws -> some IntentResult {
         let apiHandler = try EquilibriumAPIHandler(service: hub)
@@ -28,5 +28,12 @@ struct StartSceneIntent: AppIntent {
         try await apiHandler.post(endpoint: .startScene(id: sceneId))
         
         return .result()
+    }
+    
+    init() { }
+    
+    init(hub: DiscoveredService, scene: EquilibriumAPI.Scene) {
+        self.hub = hub
+        self.scene = scene
     }
 }
