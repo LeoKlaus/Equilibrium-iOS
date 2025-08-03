@@ -159,6 +159,9 @@
     "Color" : {
 
     },
+    "Command" : {
+
+    },
     "Command group" : {
 
     },
@@ -607,13 +610,19 @@
     "Select the type that best fits your device. This information will be used to automatically suggest key maps for your remote." : {
 
     },
+    "Send a command that doesn't belong to a device." : {
+
+    },
     "Send a command to a device." : {
 
     },
     "Send command" : {
 
     },
-    "Sends the given command to the given device via the selected Hub." : {
+    "Sends the given command to the given device via the selected hub." : {
+
+    },
+    "Sends the given command via the selected hub." : {
 
     },
     "Setting the correct button allows Equilibrium to automatically suggest key maps for scenes." : {

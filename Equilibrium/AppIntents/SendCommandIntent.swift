@@ -9,68 +9,59 @@ import AppIntents
 import EquilibriumAPI
 
 struct SendCommandIntent: AppIntent {
-    static let title: LocalizedStringResource = "Send a command to a device."
-    static let description: IntentDescription? = "Sends the given command to the given device via the selected Hub."
+    static let title: LocalizedStringResource = "Send a command that doesn't belong to a device."
+    static let description: IntentDescription? = "Sends the given command via the selected hub."
     
     @Parameter(title: "Hub")
     var hub: DiscoveredService
     
-    //@Parameter(title: "Device")
-    //var device: Device?
+    @Parameter(title: "Command")
+    var command: Command
     
     func perform() async throws -> some IntentResult {
+        let apiHandler = try EquilibriumAPIHandler(service: hub)
+        
+        guard let commandId = command.id else {
+            return .result()
+        }
+        
+        try await apiHandler.post(endpoint: .sendCommand(id: commandId))
         
         return .result()
     }
 }
 
-/*struct SendCommandToIntent: AppIntent {
-    
+
+struct SendCommandToDeviceIntent: AppIntent {
     static let title: LocalizedStringResource = "Send a command to a device."
-    static let description: IntentDescription? = "Sends the given command to the given device via the selected Hub."
+    static let description: IntentDescription? = "Sends the given command to the given device via the selected hub."
     
     @Parameter(title: "Hub")
-    var hub: ConnectedHub
+    var hub: DiscoveredService
     
-    @Parameter(title: "Device")
-    var device: HarmonyDevice
+    @Parameter(title: "Device", default: nil)
+    var device: Device
     
     @Parameter(title: "Command")
-    var command: String?
+    var command: Command
     
-    init() { }
-    
-    init(hub: ConnectedHub, device: HarmonyDevice, command: HarmonyControlGroupFunction?) {
-        self.hub = hub
-        self.device = device
-        self.command = command?.action
-    }
+    /*static var parameterSummary: some ParameterSummary {
+     When(\.$device, .hasAnyValue) {
+     Summary("Send \(\.$command) to \(\.$device) via \(\.$hub)")
+     } otherwise: {
+     Summary("Send \(\.$command) via \(\.$hub)")
+     }
+     }*/
     
     func perform() async throws -> some IntentResult {
+        let apiHandler = try EquilibriumAPIHandler(service: hub)
         
-        guard let command else {
-            throw SendCommandToDeviceViaWidgetIntentError.missingCommand
+        guard let commandId = command.id else {
+            return .result()
         }
         
-        let formatter = DateFormatter()
-        formatter.dateFormat = "H:mm:ss.SSSS"
+        try await apiHandler.post(endpoint: .sendCommand(id: commandId))
         
-        UserDefaults(suiteName: "group.me.wehrfritz.Telefant")?.set("\(formatter.string(from: .now)) Received command for \(device.label ?? "")", forKey: "lastReceived")
-        
-        let params = [
-            "status": "pressrelease",
-            "timestamp": Date().timeIntervalSince1970*1000,
-            "verb": "render",
-            "action": command
-        ] as [String : Any]
-        
-        do {
-            try await HarmonyApiHandler.sendCommand(command: "vnd.logitech.harmony/vnd.logitech.harmony.engine?holdAction", params: params, to: hub.id)
-            UserDefaults(suiteName: "group.me.wehrfritz.Telefant")?.set("\(formatter.string(from: .now)) Executed command \(command) successfully", forKey: "lastReceivedStatus")
-        } catch {
-            UserDefaults(suiteName: "group.me.wehrfritz.Telefant")?.set("\(formatter.string(from: .now)) Error: \(error.localizedDescription)", forKey: "lastReceivedStatus")
-        }
         return .result()
     }
 }
-*/
