@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4A0656592E3FA2CE006B2B74 /* EquilibriumAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 4A0656582E3FA2CE006B2B74 /* EquilibriumAPI */; };
+		4A493E272E507A8C0087CC93 /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 4A493E262E507A860087CC93 /* readme.md */; };
 		4AB4321C2E0441190081E4B0 /* EasyErrorHandling in Frameworks */ = {isa = PBXBuildFile; productRef = 4AB4321B2E0441190081E4B0 /* EasyErrorHandling */; };
 		4ABCD81C2E09B95100B936F1 /* EquilibriumAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 4ABCD81B2E09B95100B936F1 /* EquilibriumAPI */; };
 		4AD60E632E11B05A00B312D9 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD60E622E11B05A00B312D9 /* WidgetKit.framework */; };
@@ -40,6 +41,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4A493E262E507A860087CC93 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
 		4A5947782E3FD182009ED66F /* Equilibrium-WidgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Equilibrium-WidgetsExtension.entitlements"; sourceTree = "<group>"; };
 		4AB4320C2E043DFB0081E4B0 /* Equilibrium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Equilibrium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AD60E602E11B05A00B312D9 /* Equilibrium-WidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Equilibrium-WidgetsExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,6 +150,7 @@
 		4AB432032E043DFA0081E4B0 = {
 			isa = PBXGroup;
 			children = (
+				4A493E262E507A860087CC93 /* readme.md */,
 				4A5947782E3FD182009ED66F /* Equilibrium-WidgetsExtension.entitlements */,
 				4AD60E7C2E11B0E600B312D9 /* Equilibrium-WidgetsExtensionRelease.entitlements */,
 				4AB4320E2E043DFB0081E4B0 /* Equilibrium */,
@@ -274,6 +277,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A493E272E507A8C0087CC93 /* readme.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
