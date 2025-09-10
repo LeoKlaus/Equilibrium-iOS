@@ -7,7 +7,7 @@
 
 import AppIntents
 
-extension Int?: @retroactive EntityIdentifierConvertible {
+extension Int?: @preconcurrency @retroactive EntityIdentifierConvertible {
     public var entityIdentifierString: String {
         if let self {
             String(self)

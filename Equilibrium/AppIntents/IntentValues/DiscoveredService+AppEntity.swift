@@ -7,7 +7,7 @@
 
 import AppIntents
 
-extension DiscoveredService: AppEntity {
+extension DiscoveredService: @preconcurrency AppEntity {
     
     static let defaultQuery: HubQuery = HubQuery()
     

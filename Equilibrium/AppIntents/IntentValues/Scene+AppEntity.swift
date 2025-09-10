@@ -8,7 +8,7 @@
 import AppIntents
 import EquilibriumAPI
 
-extension Scene: @retroactive AppEntity {
+extension Scene: @preconcurrency @retroactive AppEntity {
     public static let defaultQuery: SceneQuery = SceneQuery()
     
     // Visual representation e.g. in the dropdown, when selecting the entity.

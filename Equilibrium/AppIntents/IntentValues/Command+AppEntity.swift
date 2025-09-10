@@ -8,7 +8,7 @@
 import AppIntents
 import EquilibriumAPI
 
-extension Command: @retroactive AppEntity {
+extension Command: @preconcurrency @retroactive AppEntity {
     public static let defaultQuery: CommandQuery = CommandQuery()
     
     // Visual representation e.g. in the dropdown, when selecting the entity.

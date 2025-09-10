@@ -8,7 +8,7 @@
 import AppIntents
 import EquilibriumAPI
 
-extension Device: @retroactive AppEntity {
+extension Device: @preconcurrency @retroactive AppEntity {
     public static let defaultQuery: DeviceQuery = DeviceQuery()
     
     // Visual representation e.g. in the dropdown, when selecting the entity.

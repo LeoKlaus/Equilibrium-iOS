@@ -412,6 +412,9 @@
     "Menu" : {
 
     },
+    "Menu Select" : {
+
+    },
     "Model" : {
 
     },
@@ -650,9 +653,6 @@
 
     },
     "Show controls for current scene" : {
-
-    },
-    "Sleep" : {
 
     },
     "Start %@" : {
