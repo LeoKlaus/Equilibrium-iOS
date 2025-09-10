@@ -55,7 +55,7 @@ enum BluetoothMediaKey: String, CaseIterable {
     case volumeDown = "KEY_VOLUME_DOWN"
     case mute = "KEY_MUTE"
     case power = "KEY_POWER"
-    case sleep = "KEY_SLEEP"
+    case menuPick = "KEY_MENU_PICK"
     case search = "KEY_AC_SEARCH"
     case home = "KEY_AC_HOME"
     
@@ -87,8 +87,8 @@ enum BluetoothMediaKey: String, CaseIterable {
             "Mute"
         case .power:
             "Power"
-        case .sleep:
-            "Sleep"
+        case .menuPick:
+            "Menu Select"
         case .search:
             "Search"
         case .home:
