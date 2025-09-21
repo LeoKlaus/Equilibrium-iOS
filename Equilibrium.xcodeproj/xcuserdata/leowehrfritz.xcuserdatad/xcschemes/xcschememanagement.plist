@@ -12,7 +12,20 @@
 		<key>Equilibrium.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>4AB4320B2E043DFB0081E4B0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4AD60E5F2E11B05A00B312D9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

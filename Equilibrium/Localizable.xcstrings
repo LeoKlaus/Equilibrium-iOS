@@ -78,6 +78,9 @@
     "192.168.0.123" : {
 
     },
+    "Action" : {
+
+    },
     "Add %@ commands" : {
 
     },
@@ -292,6 +295,12 @@
     "Enter" : {
 
     },
+    "Enter the lights full entity ID from Home Assistant (e.g. \"light.ceiling_lamp\")" : {
+
+    },
+    "Entity" : {
+
+    },
     "Escape" : {
 
     },
@@ -359,6 +368,9 @@
 
     },
     "Integration" : {
+
+    },
+    "Integration Command" : {
 
     },
     "Invert Images in Dark Mode" : {
@@ -607,9 +619,6 @@
     "Scenes" : {
 
     },
-    "Script" : {
-
-    },
     "Script Command" : {
 
     },
@@ -719,6 +728,9 @@
 
     },
     "To pair Equilibrium to a new bluetooth device, enable discovery here first and then connect to **Equilibrium Virtual Keyboard** from the bluetooth settings of your device. For some devices (notably Apple TVs), pairing does not start automatically after connecting.\nIn that case, use the **Pair devices** button below to manually initiate pairing." : {
+
+    },
+    "Toggle Light" : {
 
     },
     "Toggle Power" : {

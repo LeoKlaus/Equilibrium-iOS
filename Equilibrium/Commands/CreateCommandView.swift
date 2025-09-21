@@ -41,6 +41,10 @@ struct CreateCommandView: View {
     @State private var btMediaAction: BluetoothMediaKey = .play
     @State private var otherBtAction: String = ""
     
+    // Integration command only
+    @State private var integrationAction: IntegrationAction = .toggleLight
+    @State private var integrationEntity: String = ""
+    
     @Sendable func getDevices() async {
         do {
             _ = try await self.connectionHandler.getDevices()
@@ -56,6 +60,9 @@ struct CreateCommandView: View {
         var networkHost: String? = nil
         var networkMethod: HTTPMethod? = nil
         var networkBody: String? = nil
+        
+        var integrationAction: IntegrationAction? = nil
+        var integrationEntity: String? = nil
         
         switch self.type {
         case .ir:
@@ -80,6 +87,9 @@ struct CreateCommandView: View {
         case .script:
             // TODO: Implement
             break
+        case .integration:
+            integrationAction = self.integrationAction
+            integrationEntity = self.integrationEntity
         }
         
         let newCommand = Command(
@@ -92,7 +102,9 @@ struct CreateCommandView: View {
             method: networkMethod,
             body: networkBody,
             btAction: btActionStr,
-            btMediaAction: btMediaActionStr
+            btMediaAction: btMediaActionStr,
+            integrationAction: integrationAction,
+            integrationEntity: integrationEntity
         )
         
         Task {
@@ -128,7 +140,8 @@ struct CreateCommandView: View {
                         Text("Infrared").tag(CommandType.ir)
                         Text("Bluetooth").tag(CommandType.bluetooth)
                         Text("Network request").tag(CommandType.network)
-                        Text("Script").tag(CommandType.script)
+                        //Text("Script").tag(CommandType.script)
+                        Text("Integration").tag(CommandType.integration)
                     }
                     NavigationLink(destination: RemoteButtonPicker(button: $button, category: commandGroup)) {
                         HStack {
@@ -172,10 +185,17 @@ struct CreateCommandView: View {
                     scriptSection
                 }
                 
+                if type == .integration {
+                    integrationSection
+                }
+                
                 if type != .ir && type != .script {
                     Button(action: self.createCommand) {
                         Label("Save", systemImage: "square.and.arrow.down")
                     }
+                    .disabled(
+                        self.type == .integration && self.integrationAction == .toggleLight && self.integrationEntity.isEmpty
+                    )
                 }
             }
         }
@@ -243,6 +263,27 @@ struct CreateCommandView: View {
                                 .opacity(0.25)
                         }
                     }
+            }
+        }
+    }
+    
+    var integrationSection: some View {
+        Section {
+            Picker("Action", selection: self.$integrationAction) {
+                Text("Toggle Light").tag(IntegrationAction.toggleLight)
+                Text("Brightness Up").tag(IntegrationAction.brightnessUp)
+                Text("Brightness Down").tag(IntegrationAction.brightnessDown)
+            }
+            if self.integrationAction == .toggleLight {
+                TextField("Entity", text: self.$integrationEntity)
+                    .autocorrectionDisabled()
+                    .textInputAutocapitalization(.never)
+            }
+        } header: {
+            Text("Integration Command")
+        } footer: {
+            if self.integrationAction == .toggleLight {
+                Text("Enter the lights full entity ID from Home Assistant (e.g. \"light.ceiling_lamp\")")
             }
         }
     }
